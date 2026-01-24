@@ -118,7 +118,7 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
 
       <div className={`relative z-20 ${isExpanded ? 'text-black' : ''}`}>
         <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
-          <h3 className={`text-3xl font-bold transition-colors lowercase ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
+          <h3 className={`text-3xl font-bold transition-colors lowercase ${isExpanded ? 'opacity-0' : 'group-hover:text-brand'}`}>
             {exp.company}
           </h3>
           <div className="flex items-center gap-4">
