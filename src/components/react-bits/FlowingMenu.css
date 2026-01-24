@@ -19,6 +19,7 @@
   overflow: visible;
   text-align: center;
   border-top: 1px solid;
+  transition: flex 0.5s ease;
 }
 
 .menu__item:first-child {
@@ -101,10 +102,8 @@
 }
 
 .menu__item-description {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+  position: relative;
+  width: 100%;
   padding: 0;
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
@@ -113,7 +112,7 @@
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transform: translateY(0);
+  margin-top: 0;
 }
 
 .menu__item-description > * {
