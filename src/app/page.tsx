@@ -34,13 +34,13 @@ export default function Home() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-black text-white selection:bg-brand selection:text-black">
       {/* Background Effect */}
-      <div className="fixed inset-0 z-0 opacity-70">
+      <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
         <PixelBlast 
           variant="square" 
           pixelSize={4} 
           color="#B19EEF" 
           patternScale={2} 
-          patternDensity={1} 
+          patternDensity={1.2}
           enableRipples 
           transparent
           speed={8}
@@ -178,8 +178,13 @@ export default function Home() {
         }
         @media (max-width: 768px) {
           .pixel-blast-container {
-            min-height: 100% !important;
-            height: auto !important;
+            min-height: 100vh !important;
+            height: 100vh !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
           }
         }
         .pixel-card {
