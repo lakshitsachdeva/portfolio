@@ -13,14 +13,20 @@ interface MenuItemProps {
   marqueeBgColor?: string;
   marqueeTextColor?: string;
   borderColor?: string;
+  description?: string;
+  role?: string;
+  date?: string;
+  tags?: string[];
 }
 
-function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBgColor = '#fff', marqueeTextColor = '#060010', borderColor = '#fff' }: MenuItemProps) {
+function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBgColor = '#fff', marqueeTextColor = '#060010', borderColor = '#fff', description, role, date, tags }: MenuItemProps) {
   const itemRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeInnerRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Tween | null>(null);
   const [repetitions, setRepetitions] = useState(4);
+  const [isOpen, setIsOpen] = useState(false);
 
   const animationDefaults = { duration: 0.6, ease: 'expo' };
 
@@ -99,6 +105,14 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
       .set(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .set(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0)
       .to([marqueeRef.current, marqueeInnerRef.current], { y: '0%' }, 0);
+    
+    if (description && descriptionRef.current) {
+      setIsOpen(true);
+      gsap.fromTo(descriptionRef.current, 
+        { opacity: 0, y: edge === 'top' ? -20 : 20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+      );
+    }
   };
 
   const handleMouseLeave = (ev: React.MouseEvent) => {
@@ -112,6 +126,34 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
       .timeline({ defaults: animationDefaults })
       .to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
+    
+    if (description && descriptionRef.current) {
+      gsap.to(descriptionRef.current, {
+        opacity: 0,
+        y: edge === 'top' ? -20 : 20,
+        duration: 0.3,
+        ease: 'power2.in',
+        onComplete: () => setIsOpen(false)
+      });
+    }
+  };
+
+  const handleTouchStart = () => {
+    if (!description || !descriptionRef.current) return;
+    setIsOpen(!isOpen);
+    if (isOpen) {
+      gsap.to(descriptionRef.current, {
+        opacity: 0,
+        height: 0,
+        duration: 0.3,
+        ease: 'power2.in'
+      });
+    } else {
+      gsap.fromTo(descriptionRef.current,
+        { opacity: 0, height: 0 },
+        { opacity: 1, height: 'auto', duration: 0.4, ease: 'power2.out' }
+      );
+    }
   };
 
   return (
@@ -121,6 +163,7 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
         href={link || '#'}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
         style={{ color: textColor }}
       >
         {text}
@@ -137,12 +180,41 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
           </div>
         </div>
       </div>
+      {description && (
+        <div 
+          ref={descriptionRef}
+          className="menu__item-description"
+          style={{ 
+            display: isOpen ? 'block' : 'none',
+            color: textColor 
+          }}
+        >
+          {role && <div className="menu__item-role">{role}</div>}
+          {date && <div className="menu__item-date">{date}</div>}
+          <div className="menu__item-desc">{description}</div>
+          {tags && tags.length > 0 && (
+            <div className="menu__item-tags">
+              {tags.map((tag, idx) => (
+                <span key={idx} className="menu__item-tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
 
 interface FlowingMenuProps {
-  items?: Array<{ link?: string; text: string; image?: string }>;
+  items?: Array<{ 
+    link?: string; 
+    text: string; 
+    image?: string;
+    description?: string;
+    role?: string;
+    date?: string;
+    tags?: string[];
+  }>;
   speed?: number;
   textColor?: string;
   bgColor?: string;
@@ -166,7 +238,13 @@ function FlowingMenu({
         {items.map((item, idx) => (
           <MenuItem
             key={idx}
-            {...item}
+            link={item.link}
+            text={item.text}
+            image={item.image}
+            description={item.description}
+            role={item.role}
+            date={item.date}
+            tags={item.tags}
             speed={speed}
             textColor={textColor}
             marqueeBgColor={marqueeBgColor}

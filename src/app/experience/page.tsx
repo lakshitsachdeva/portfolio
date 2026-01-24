@@ -39,9 +39,13 @@ export default function ExperiencePage() {
   ];
 
   const flowingMenuItems = experiences.map(exp => ({
-    text: `${exp.company} • ${exp.role}`,
+    text: exp.company,
     link: '#',
-    image: undefined
+    image: undefined,
+    description: exp.description,
+    role: exp.role,
+    date: exp.date,
+    tags: exp.tags
   }));
 
   const education = [
@@ -106,38 +110,6 @@ export default function ExperiencePage() {
               marqueeTextColor="#000000"
               borderColor="#B19EEF"
             />
-          </div>
-          
-          {/* Detailed cards below */}
-          <div className="space-y-12 mt-24">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative p-8 rounded-3xl border border-brand/20 bg-brand/5 backdrop-blur-sm hover:bg-brand/10 hover:border-brand/40 transition-all"
-              >
-                <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
-                  <h3 className="text-3xl font-bold group-hover:text-brand transition-colors lowercase">{exp.company}</h3>
-                  <span className="text-zinc-500 text-sm font-medium lowercase">{exp.date}</span>
-                </div>
-                <p className="text-brand/90 text-lg font-medium mb-6 lowercase">{exp.role}</p>
-                <p className="text-zinc-300 leading-relaxed text-lg mb-8 font-medium lowercase">
-                  {exp.description}
-                </p>
-                {exp.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-3">
-                    {exp.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-medium lowercase px-3 py-1.5 bg-brand/20 text-brand rounded-full border border-brand/30">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            ))}
           </div>
         </section>
 
