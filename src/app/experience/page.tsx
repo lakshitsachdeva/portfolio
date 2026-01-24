@@ -3,16 +3,24 @@
 import { motion } from "framer-motion";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import BlurText from "@/components/react-bits/BlurText";
-import { Briefcase, GraduationCap, Award, ExternalLink } from "lucide-react";
+import FlowingMenu from "@/components/react-bits/FlowingMenu";
+import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function ExperiencePage() {
   const experiences = [
     {
-      company: "ELGI",
+      company: "ELGI EQUIPMENTS BANGALORE",
       role: "upcoming intern",
       date: "coming soon",
-      description: "building something crazy",
+      description: "building something crazy at elgi equipments, bangalore. working on innovative solutions and cutting-edge projects in the industrial equipment space.",
       tags: []
+    },
+    {
+      company: "QUILL AND INK",
+      role: "founder",
+      date: "2024 - present",
+      description: "founded quill and ink, building innovative solutions and products. leading development of creative tools and platforms that empower creators.",
+      tags: ["founder", "product development", "startup"]
     },
     {
       company: "Amazon",
@@ -29,6 +37,12 @@ export default function ExperiencePage() {
       tags: ["computational physics", "device optimization", "SCAPS-1D"]
     }
   ];
+
+  const flowingMenuItems = experiences.map(exp => ({
+    text: `${exp.company} • ${exp.role}`,
+    link: '#',
+    image: undefined
+  }));
 
   const education = [
     {
@@ -82,12 +96,25 @@ export default function ExperiencePage() {
           <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
             <Briefcase size={14} className="text-brand" /> experience
           </h2>
-          <div className="space-y-32">
+          <div className="h-[600px] rounded-3xl overflow-hidden border border-brand/20">
+            <FlowingMenu
+              items={flowingMenuItems}
+              speed={20}
+              textColor="#B19EEF"
+              bgColor="#000000"
+              marqueeBgColor="#B19EEF"
+              marqueeTextColor="#000000"
+              borderColor="#B19EEF"
+            />
+          </div>
+          
+          {/* Detailed cards below */}
+          <div className="space-y-12 mt-24">
             {experiences.map((exp, i) => (
               <motion.div
                 key={exp.company}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="group relative p-8 rounded-3xl border border-brand/20 bg-brand/5 backdrop-blur-sm hover:bg-brand/10 hover:border-brand/40 transition-all"

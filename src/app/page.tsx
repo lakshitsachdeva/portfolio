@@ -80,10 +80,10 @@ export default function Home() {
               <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail size={16} /> lakshits.official@gmail.com
               </a>
-              <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
                 <Linkedin size={16} /> linkedin
               </a>
-              <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
                 <Github size={16} /> github
               </a>
             </motion.div>
