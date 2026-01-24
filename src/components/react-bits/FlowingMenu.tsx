@@ -110,10 +110,10 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
       setIsOpen(true);
       descriptionRef.current.style.display = 'block';
       gsap.fromTo(descriptionRef.current, 
-        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0, y: 0 },
+        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
         { 
           opacity: 1, 
-          maxHeight: '500px',
+          maxHeight: '400px',
           paddingTop: '2rem',
           paddingBottom: '2rem',
           duration: 0.5, 
@@ -161,10 +161,10 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
     if (newIsOpen) {
       descriptionRef.current.style.display = 'block';
       gsap.fromTo(descriptionRef.current,
-        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0, y: 0 },
+        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
         { 
           opacity: 1, 
-          maxHeight: '500px',
+          maxHeight: '400px',
           paddingTop: '2rem',
           paddingBottom: '2rem',
           duration: 0.5, 

@@ -100,7 +100,7 @@ export default function ExperiencePage() {
           <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
             <Briefcase size={14} className="text-brand" /> experience
           </h2>
-          <div className="h-[600px] rounded-3xl overflow-hidden border border-brand/20">
+          <div className="h-[600px] rounded-3xl overflow-visible border border-brand/20 relative">
             <FlowingMenu
               items={flowingMenuItems}
               speed={20}
