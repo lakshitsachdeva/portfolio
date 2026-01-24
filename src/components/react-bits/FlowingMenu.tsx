@@ -108,9 +108,17 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
     
     if (description && descriptionRef.current) {
       setIsOpen(true);
+      descriptionRef.current.style.display = 'block';
       gsap.fromTo(descriptionRef.current, 
-        { opacity: 0, y: edge === 'top' ? -20 : 20 },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0, y: 0 },
+        { 
+          opacity: 1, 
+          maxHeight: '500px',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+          duration: 0.5, 
+          ease: 'power2.out' 
+        }
       );
     }
   };
@@ -130,10 +138,17 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
     if (description && descriptionRef.current) {
       gsap.to(descriptionRef.current, {
         opacity: 0,
-        y: edge === 'top' ? -20 : 20,
-        duration: 0.3,
+        maxHeight: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        duration: 0.4,
         ease: 'power2.in',
-        onComplete: () => setIsOpen(false)
+        onComplete: () => {
+          setIsOpen(false);
+          if (descriptionRef.current) {
+            descriptionRef.current.style.display = 'none';
+          }
+        }
       });
     }
   };
@@ -144,15 +159,25 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
     const newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
     if (newIsOpen) {
+      descriptionRef.current.style.display = 'block';
       gsap.fromTo(descriptionRef.current,
-        { opacity: 0, y: 20, display: 'block' },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0, y: 0 },
+        { 
+          opacity: 1, 
+          maxHeight: '500px',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+          duration: 0.5, 
+          ease: 'power2.out' 
+        }
       );
     } else {
       gsap.to(descriptionRef.current, {
         opacity: 0,
-        y: 20,
-        duration: 0.3,
+        maxHeight: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        duration: 0.4,
         ease: 'power2.in',
         onComplete: () => {
           if (descriptionRef.current) {
@@ -192,9 +217,8 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
           ref={descriptionRef}
           className="menu__item-description"
           style={{ 
-            display: isOpen ? 'block' : 'none',
-            color: textColor,
-            opacity: isOpen ? 1 : 0
+            display: 'none',
+            color: textColor
           }}
         >
           {role && <div className="menu__item-role">{role}</div>}
