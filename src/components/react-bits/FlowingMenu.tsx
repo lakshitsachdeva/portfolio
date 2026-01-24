@@ -138,21 +138,28 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
     }
   };
 
-  const handleTouchStart = () => {
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
     if (!description || !descriptionRef.current) return;
-    setIsOpen(!isOpen);
-    if (isOpen) {
+    const newIsOpen = !isOpen;
+    setIsOpen(newIsOpen);
+    if (newIsOpen) {
+      gsap.fromTo(descriptionRef.current,
+        { opacity: 0, y: 20, display: 'block' },
+        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+      );
+    } else {
       gsap.to(descriptionRef.current, {
         opacity: 0,
-        height: 0,
+        y: 20,
         duration: 0.3,
-        ease: 'power2.in'
+        ease: 'power2.in',
+        onComplete: () => {
+          if (descriptionRef.current) {
+            descriptionRef.current.style.display = 'none';
+          }
+        }
       });
-    } else {
-      gsap.fromTo(descriptionRef.current,
-        { opacity: 0, height: 0 },
-        { opacity: 1, height: 'auto', duration: 0.4, ease: 'power2.out' }
-      );
     }
   };
 
@@ -186,7 +193,8 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
           className="menu__item-description"
           style={{ 
             display: isOpen ? 'block' : 'none',
-            color: textColor 
+            color: textColor,
+            opacity: isOpen ? 1 : 0
           }}
         >
           {role && <div className="menu__item-role">{role}</div>}
