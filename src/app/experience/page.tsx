@@ -176,13 +176,6 @@ export default function ExperiencePage() {
       tags: []
     },
     {
-      company: "THE QUILL AND INK, GURUGRAM, HARYANA",
-      role: "founder, ceo",
-      date: "january 2021 – october 2023",
-      description: "pioneered a non-profit organization aimed at elevating awareness of social stigmas in india, spearheading strategic initiatives, directing a team of contributors, and supervising content dissemination. collaborated with 10+ team members to drive substantial engagement, amassing over 50,000 interactions on various social media platforms.",
-      tags: ["founder", "non-profit", "social impact"]
-    },
-    {
       company: "AMAZON, INDIA",
       role: "trainee – ml summer school",
       date: "august 2025",
@@ -195,6 +188,13 @@ export default function ExperiencePage() {
       date: "march 2023 - august 2024",
       description: "conducted pioneering research in lead-free perovskite-based solar cells, achieving a remarkable efficiency using advanced device configuration and employing SCAPS 1D tool. wrote a paper titled – 'enhancing efficiency of lead-free perovskite solar cell by varying thickness, layer combination and back contact work function'.",
       tags: ["computational physics", "device optimization", "SCAPS-1D"]
+    },
+    {
+      company: "THE QUILL AND INK, GURUGRAM, HARYANA",
+      role: "founder, ceo",
+      date: "january 2021 – october 2023",
+      description: "pioneered a non-profit organization aimed at elevating awareness of social stigmas in india, spearheading strategic initiatives, directing a team of contributors, and supervising content dissemination. collaborated with 10+ team members to drive substantial engagement, amassing over 50,000 interactions on various social media platforms.",
+      tags: ["founder", "non-profit", "social impact"]
     }
   ];
 
@@ -247,8 +247,9 @@ export default function ExperiencePage() {
         </motion.div>
 
         <section className="mb-48">
-          <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
-            <Briefcase size={14} className="text-brand" /> experience
+          <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3 relative z-30">
+            <Briefcase size={14} className="text-brand" />
+            <span>experience</span>
           </h2>
           <div className="space-y-8">
             {experiences.map((exp, i) => (
