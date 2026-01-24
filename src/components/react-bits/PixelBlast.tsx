@@ -343,12 +343,14 @@ const PixelBlast = ({
 
       const canvas = document.createElement('canvas');
       const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-      const maxPixelRatio = isMobile ? 1 : 2;
+      const maxPixelRatio = 1; // Reduced from 2 to 1 for better performance
       const renderer = new THREE.WebGLRenderer({ 
         canvas, 
-        antialias: !isMobile, 
+        antialias: false, // Disabled for better performance
         alpha: true, 
-        powerPreference: 'high-performance' 
+        powerPreference: 'high-performance',
+        stencil: false,
+        depth: false
       });
       renderer.domElement.style.width = '100%';
       renderer.domElement.style.height = '100%';
@@ -466,11 +468,24 @@ const PixelBlast = ({
       renderer.domElement.addEventListener('pointerdown', onPointerDown, { passive: true });
       renderer.domElement.addEventListener('pointermove', onPointerMove, { passive: true });
       let raf = 0;
-      const animate = () => {
+      let lastFrameTime = 0;
+      const targetFPS = 30; // Limit to 30 FPS for better performance
+      const frameInterval = 1000 / targetFPS;
+      
+      const animate = (currentTime: number) => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
           raf = requestAnimationFrame(animate);
           return;
         }
+        
+        // Frame rate limiting
+        const elapsed = currentTime - lastFrameTime;
+        if (elapsed < frameInterval) {
+          raf = requestAnimationFrame(animate);
+          return;
+        }
+        lastFrameTime = currentTime - (elapsed % frameInterval);
+        
         uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current;
         if (liquidEffect) (liquidEffect.uniforms.get('uTime') as THREE.IUniform).value = uniforms.uTime.value;
         if (composer) {

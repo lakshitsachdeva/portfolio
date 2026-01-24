@@ -12,13 +12,14 @@ export default function AboutPage() {
       <div className="fixed inset-0 z-0 opacity-40">
         <PixelBlast 
           variant="square" 
-          pixelSize={4} 
+          pixelSize={5} 
           color="#B19EEF" 
           patternScale={2} 
-          patternDensity={1} 
-          enableRipples 
+          patternDensity={0.8}
+          enableRipples={false}
           transparent
-          speed={8}
+          speed={2}
+          antialias={false}
         />
       </div>
 
