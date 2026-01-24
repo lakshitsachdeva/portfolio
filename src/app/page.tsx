@@ -98,7 +98,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-3xl sm:text-5xl font-light leading-tight text-zinc-300 lowercase">
-                building stuff at the intersection of <span className="text-white font-medium italic underline decoration-brand underline-offset-8">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves.
+                building stuff at the intersection of <span className="text-white font-medium italic bg-brand px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves.
               </p>
             </motion.div>
           </section>
