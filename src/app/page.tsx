@@ -172,6 +172,15 @@ export default function Home() {
       <style jsx global>{`
         .pixel-blast-container {
           filter: grayscale(1) contrast(1.2);
+          width: 100% !important;
+          height: 100% !important;
+          min-height: 100vh !important;
+        }
+        @media (max-width: 768px) {
+          .pixel-blast-container {
+            min-height: 100% !important;
+            height: auto !important;
+          }
         }
         .pixel-card {
           border-color: #18181b !important;
