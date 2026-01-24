@@ -89,21 +89,20 @@ export default function ExperiencePage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative pl-12"
+                className="group relative p-8 rounded-3xl border border-brand/20 bg-brand/5 backdrop-blur-sm hover:bg-brand/10 hover:border-brand/40 transition-all"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-zinc-900 group-hover:bg-brand transition-colors" />
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
                   <h3 className="text-3xl font-bold group-hover:text-brand transition-colors lowercase">{exp.company}</h3>
                   <span className="text-zinc-500 text-sm font-medium lowercase">{exp.date}</span>
                 </div>
-                <p className="text-brand/80 text-lg font-medium mb-6 lowercase">{exp.role}</p>
-                <p className="text-zinc-400 leading-relaxed text-lg mb-8 font-medium lowercase">
+                <p className="text-brand/90 text-lg font-medium mb-6 lowercase">{exp.role}</p>
+                <p className="text-zinc-300 leading-relaxed text-lg mb-8 font-medium lowercase">
                   {exp.description}
                 </p>
                 {exp.tags.length > 0 && (
                   <div className="flex flex-wrap gap-3">
                     {exp.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-medium lowercase px-3 py-1.5 bg-zinc-950 rounded-full border border-white/5">
+                      <span key={tag} className="text-[9px] font-medium lowercase px-3 py-1.5 bg-brand/20 text-brand rounded-full border border-brand/30">
                         {tag}
                       </span>
                     ))}
@@ -125,14 +124,14 @@ export default function ExperiencePage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-10 border border-white/5 bg-zinc-950/50 rounded-3xl"
+                className="p-10 border border-brand/20 bg-brand/5 backdrop-blur-sm rounded-3xl hover:bg-brand/10 hover:border-brand/40 transition-all"
               >
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-2xl font-bold lowercase">{edu.school}</h3>
                   <span className="text-zinc-500 text-[10px] font-medium lowercase">{edu.date}</span>
                 </div>
                 <p className="text-brand text-sm font-medium mb-4 lowercase">{edu.degree}</p>
-                <p className="text-zinc-400 font-medium lowercase">{edu.details}</p>
+                <p className="text-zinc-300 font-medium lowercase">{edu.details}</p>
               </motion.div>
             ))}
           </div>

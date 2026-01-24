@@ -97,6 +97,7 @@ export default function BlogPostPage() {
             speed={8}
           />
         </div>
+        <div className="fixed inset-0 z-[1] bg-black/40" />
         <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4 lowercase">post not found</h1>
@@ -123,6 +124,9 @@ export default function BlogPostPage() {
           speed={8}
         />
       </div>
+      
+      {/* Black overlay for readability */}
+      <div className="fixed inset-0 z-[1] bg-black/40" />
 
       <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
         <motion.div
