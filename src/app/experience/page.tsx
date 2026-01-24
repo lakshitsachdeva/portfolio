@@ -3,10 +3,13 @@
 import { motion } from "framer-motion";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import BlurText from "@/components/react-bits/BlurText";
-import FlowingMenu from "@/components/react-bits/FlowingMenu";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase, GraduationCap, ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { gsap } from "gsap";
 
 export default function ExperiencePage() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   const experiences = [
     {
       company: "ELGI EQUIPMENTS BANGALORE",
@@ -37,16 +40,6 @@ export default function ExperiencePage() {
       tags: ["computational physics", "device optimization", "SCAPS-1D"]
     }
   ];
-
-  const flowingMenuItems = experiences.map(exp => ({
-    text: exp.company,
-    link: '#',
-    image: undefined,
-    description: exp.description,
-    role: exp.role,
-    date: exp.date,
-    tags: exp.tags
-  }));
 
   const education = [
     {
@@ -100,16 +93,69 @@ export default function ExperiencePage() {
           <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
             <Briefcase size={14} className="text-brand" /> experience
           </h2>
-          <div className="h-[600px] rounded-3xl overflow-visible border border-brand/20 relative">
-            <FlowingMenu
-              items={flowingMenuItems}
-              speed={20}
-              textColor="#B19EEF"
-              bgColor="#000000"
-              marqueeBgColor="#B19EEF"
-              marqueeTextColor="#000000"
-              borderColor="#B19EEF"
-            />
+          <div className="space-y-8">
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative p-8 rounded-3xl border border-brand/20 bg-brand/5 backdrop-blur-sm hover:bg-brand/10 hover:border-brand/40 transition-all cursor-pointer"
+                onClick={() => {
+                  const newIndex = expandedIndex === i ? null : i;
+                  setExpandedIndex(newIndex);
+                  const descEl = document.getElementById(`desc-${i}`);
+                  if (descEl) {
+                    if (newIndex === i) {
+                      gsap.fromTo(descEl,
+                        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
+                        { opacity: 1, maxHeight: '500px', paddingTop: '1.5rem', paddingBottom: '1.5rem', duration: 0.4, ease: 'power2.out' }
+                      );
+                    } else {
+                      gsap.to(descEl, {
+                        opacity: 0,
+                        maxHeight: 0,
+                        paddingTop: 0,
+                        paddingBottom: 0,
+                        duration: 0.3,
+                        ease: 'power2.in'
+                      });
+                    }
+                  }
+                }}
+              >
+                <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
+                  <h3 className="text-3xl font-bold group-hover:text-brand transition-colors lowercase">{exp.company}</h3>
+                  <div className="flex items-center gap-4">
+                    <span className="text-zinc-500 text-sm font-medium lowercase">{exp.date}</span>
+                    <ChevronDown 
+                      size={20} 
+                      className={`text-brand transition-transform duration-300 ${expandedIndex === i ? 'rotate-180' : ''}`}
+                    />
+                  </div>
+                </div>
+                <p className="text-brand/90 text-lg font-medium mb-6 lowercase">{exp.role}</p>
+                <div
+                  id={`desc-${i}`}
+                  className="overflow-hidden"
+                  style={{ maxHeight: 0, opacity: 0 }}
+                >
+                  <p className="text-zinc-300 leading-relaxed text-lg mb-8 font-medium lowercase">
+                    {exp.description}
+                  </p>
+                  {exp.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-3">
+                      {exp.tags.map(tag => (
+                        <span key={tag} className="text-[9px] font-medium lowercase px-3 py-1.5 bg-brand/20 text-brand rounded-full border border-brand/30">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 
