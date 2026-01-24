@@ -76,7 +76,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-wrap gap-8 text-sm font-medium lowercase text-zinc-500"
         >
-          <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
+          <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
             <Mail size={16} /> lakshits.official@gmail.com
           </a>
           <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">

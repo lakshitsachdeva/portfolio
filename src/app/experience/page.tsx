@@ -176,24 +176,24 @@ export default function ExperiencePage() {
       tags: []
     },
     {
-      company: "QUILL AND INK",
-      role: "founder",
-      date: "2024 - present",
-      description: "founded quill and ink, building innovative solutions and products. leading development of creative tools and platforms that empower creators.",
-      tags: ["founder", "product development", "startup"]
+      company: "THE QUILL AND INK, GURUGRAM, HARYANA",
+      role: "founder, ceo",
+      date: "january 2021 – october 2023",
+      description: "pioneered a non-profit organization aimed at elevating awareness of social stigmas in india, spearheading strategic initiatives, directing a team of contributors, and supervising content dissemination. collaborated with 10+ team members to drive substantial engagement, amassing over 50,000 interactions on various social media platforms.",
+      tags: ["founder", "non-profit", "social impact"]
     },
     {
-      company: "Amazon",
+      company: "AMAZON, INDIA",
       role: "trainee – ml summer school",
       date: "august 2025",
-      description: "intensive deep-dive into advanced machine learning paradigms. core modules included supervised learning, deep neural networks, dimensionality reduction, and generative ai. applied theoretical concepts to real-world datasets and architectural patterns.",
+      description: "selected for amazon ml summer school 2025 (5% acceptance rate), an intensive program covering advanced ml topics including supervised learning, deep neural networks, generative ai, and reinforcement learning, with interactive sessions led by senior amazon scientists.",
       tags: ["generative ai", "deep learning", "supervised learning"]
     },
     {
-      company: "NMIMS MPSTME",
-      role: "research intern",
-      date: "2023 - 2024",
-      description: "conducted computational optimization of lead-free perovskite solar cells using SCAPS-1D. engineered device architectures that achieved 22.3% efficiency. authored research paper currently under review at Elsevier's Materials Today: Proceedings.",
+      company: "NMIMS, MUMBAI, MAHARASHTRA",
+      role: "research intern - solar cell optimization",
+      date: "march 2023 - august 2024",
+      description: "conducted pioneering research in lead-free perovskite-based solar cells, achieving a remarkable efficiency using advanced device configuration and employing SCAPS 1D tool. wrote a paper titled – 'enhancing efficiency of lead-free perovskite solar cell by varying thickness, layer combination and back contact work function'.",
       tags: ["computational physics", "device optimization", "SCAPS-1D"]
     }
   ];
