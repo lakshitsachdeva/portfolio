@@ -37,6 +37,22 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
       onClick={() => {
         const newIndex = expandedIndex === index ? null : index;
         setExpandedIndex(newIndex);
+        
+        // Close any previously expanded card
+        if (expandedIndex !== null && expandedIndex !== index) {
+          const prevDescEl = document.getElementById(`desc-${expandedIndex}`);
+          if (prevDescEl) {
+            gsap.to(prevDescEl, {
+              opacity: 0,
+              maxHeight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+              duration: 0.3,
+              ease: 'power2.in'
+            });
+          }
+        }
+        
         const descEl = document.getElementById(`desc-${index}`);
         if (descEl) {
           if (newIndex === index) {

@@ -50,10 +50,10 @@ export default function Home() {
 
       <ClickSpark
         sparkColor='#93C5FD'
-        sparkSize={14}
-        sparkRadius={25}
-        sparkCount={12}
-        duration={600}
+        sparkSize={20}
+        sparkRadius={35}
+        sparkCount={20}
+        duration={800}
       >
         <main className="relative z-10 mx-auto max-w-6xl px-6 py-32 sm:px-12 lg:px-16">
           {/* Hero Section */}
