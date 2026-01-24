@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useParams, useRouter } from 'next/navigation';
-import DarkVeil from '@/components/react-bits/DarkVeil';
+import PixelBlast from '@/components/react-bits/PixelBlast';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import Link from 'next/link';
@@ -59,14 +59,16 @@ export default function BlogPostPage() {
   if (loading) {
     return (
       <div className="relative min-h-screen bg-black text-white">
-        <div className="fixed inset-0 z-0 opacity-60">
-          <DarkVeil
-            hueShift={0}
-            noiseIntensity={0.05}
-            scanlineIntensity={0.1}
-            speed={0.3}
-            scanlineFrequency={2}
-            warpAmount={0.1}
+        <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
+          <PixelBlast 
+            variant="square" 
+            pixelSize={4} 
+            color="#B19EEF" 
+            patternScale={2} 
+            patternDensity={1.2}
+            enableRipples 
+            transparent
+            speed={8}
           />
         </div>
         <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
@@ -83,14 +85,16 @@ export default function BlogPostPage() {
   if (error || !post) {
     return (
       <div className="relative min-h-screen bg-black text-white">
-        <div className="fixed inset-0 z-0 opacity-60">
-          <DarkVeil
-            hueShift={0}
-            noiseIntensity={0.05}
-            scanlineIntensity={0.1}
-            speed={0.3}
-            scanlineFrequency={2}
-            warpAmount={0.1}
+        <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
+          <PixelBlast 
+            variant="square" 
+            pixelSize={4} 
+            color="#B19EEF" 
+            patternScale={2} 
+            patternDensity={1.2}
+            enableRipples 
+            transparent
+            speed={8}
           />
         </div>
         <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
@@ -107,14 +111,16 @@ export default function BlogPostPage() {
 
   return (
     <div className="relative min-h-screen bg-black text-white">
-      <div className="fixed inset-0 z-0 opacity-60">
-        <DarkVeil
-          hueShift={0}
-          noiseIntensity={0.05}
-          scanlineIntensity={0.1}
-          speed={0.3}
-          scanlineFrequency={2}
-          warpAmount={0.1}
+      <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
+        <PixelBlast 
+          variant="square" 
+          pixelSize={4} 
+          color="#B19EEF" 
+          patternScale={2} 
+          patternDensity={1.2}
+          enableRipples 
+          transparent
+          speed={8}
         />
       </div>
 

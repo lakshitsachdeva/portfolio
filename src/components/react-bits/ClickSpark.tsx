@@ -100,8 +100,11 @@ const ClickSpark = ({
         const y1 = spark.y + distance * Math.sin(spark.angle);
         const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
         const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
-        ctx.strokeStyle = sparkColor;
-        ctx.lineWidth = 2;
+        // Alternate between blue and white for visual variety
+        const colors = ['#93C5FD', '#FFFFFF', '#60A5FD', '#DBEAFE'];
+        const colorIndex = Math.floor(spark.angle * 2) % colors.length;
+        ctx.strokeStyle = colors[colorIndex];
+        ctx.lineWidth = 2.5;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);

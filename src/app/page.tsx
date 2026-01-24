@@ -15,7 +15,7 @@ export default function Home() {
       title: "Neural Vulnerability Engine",
       description: "Architecting a hybrid CNN-LSTM architecture integrated with CLIP-based RAG for autonomous vulnerability discovery and security reasoning in large-scale systems.",
       tags: ["PyTorch", "CLIP", "FAISS", "RAG"],
-      variant: "pink" as const
+      variant: "blue" as const
     },
     {
       title: "Vision-AI Waste Management",
@@ -27,7 +27,7 @@ export default function Home() {
       title: "Predictive Alpha: Quant Platform",
       description: "Developing a full-stack financial engine with real-time volatility tracking, secure multi-tenant architecture, and automated portfolio optimization algorithms.",
       tags: ["Next.js", "Supabase", "SQL", "Quantitative ML"],
-      variant: "yellow" as const
+      variant: "blue" as const
     }
   ], []);
 
@@ -48,11 +48,11 @@ export default function Home() {
       </div>
 
       <ClickSpark
-        sparkColor='#B19EEF'
-        sparkSize={12}
-        sparkRadius={20}
-        sparkCount={10}
-        duration={500}
+        sparkColor='#93C5FD'
+        sparkSize={14}
+        sparkRadius={25}
+        sparkCount={12}
+        duration={600}
       >
         <main className="relative z-10 mx-auto max-w-6xl px-6 py-32 sm:px-12 lg:px-16">
           {/* Hero Section */}
@@ -79,10 +79,10 @@ export default function Home() {
               <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail size={16} /> lakshits.official@gmail.com
               </a>
-              <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Linkedin size={16} /> linkedin
               </a>
-              <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Github size={16} /> github
               </a>
             </motion.div>
@@ -123,7 +123,7 @@ export default function Home() {
                   <PixelCard variant={project.variant} speed={300} className="w-full !h-[500px] transition-transform duration-500 group-hover:scale-[1.02]">
                     <div className="absolute inset-0 p-10 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none">
                       <div className="mb-6 p-3 bg-white/5 rounded-2xl w-fit backdrop-blur-sm border border-white/10">
-                        {i === 0 ? <BrainCircuit size={24} className="text-pink-400" /> : i === 1 ? <Cpu size={24} className="text-blue-400" /> : <Network size={24} className="text-yellow-400" />}
+                        {i === 0 ? <BrainCircuit size={24} className="text-blue-400" /> : i === 1 ? <Cpu size={24} className="text-blue-400" /> : <Network size={24} className="text-blue-400" />}
                       </div>
                       <h3 className="text-3xl font-bold mb-4 leading-tight group-hover:text-brand transition-colors lowercase">{project.title}</h3>
                       <p className="text-zinc-400 text-sm mb-8 leading-relaxed font-medium lowercase">
@@ -150,7 +150,7 @@ export default function Home() {
                 wanna build something? <br />
                 <span className="text-zinc-500">let's connect</span>
               </h2>
-              <Link href="mailto:Lakshits.official@gmail.com" className="px-12 py-6 bg-white text-black font-medium lowercase text-sm rounded-full hover:bg-brand transition-all hover:scale-105 active:scale-95">
+              <Link href="mailto:Lakshits.official@gmail.com" className="px-12 py-6 bg-white text-black font-medium lowercase text-base rounded-full hover:bg-brand transition-all hover:scale-105 active:scale-95">
                 say hi
               </Link>
             </div>

@@ -31,7 +31,7 @@ function Navbar() {
               {pathname === item.path && (
                 <motion.div
                   layoutId="nav-active"
-                  className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                  className="absolute inset-0 bg-brand/20 rounded-full -z-10"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}

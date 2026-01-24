@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function AboutPage() {
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-brand selection:text-black">
-      <div className="fixed inset-0 z-0 opacity-70">
+      <div className="fixed inset-0 z-0 opacity-40">
         <PixelBlast 
           variant="square" 
           pixelSize={4} 
@@ -78,10 +78,10 @@ export default function AboutPage() {
           <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
             <Mail size={16} /> lakshits.official@gmail.com
           </a>
-          <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
             <Linkedin size={16} /> linkedin
           </a>
-          <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
+          <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
             <Github size={16} /> github
           </a>
         </motion.div>
