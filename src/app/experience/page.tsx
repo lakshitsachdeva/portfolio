@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import BlurText from "@/components/react-bits/BlurText";
 import { Briefcase, GraduationCap, ChevronDown } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { gsap } from "gsap";
 
 interface ExperienceCardProps {
@@ -21,43 +21,7 @@ interface ExperienceCardProps {
 }
 
 function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: ExperienceCardProps) {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-  const marqueeInnerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<gsap.core.Tween | null>(null);
   const isExpanded = expandedIndex === index;
-
-  useEffect(() => {
-    if (isExpanded && marqueeInnerRef.current) {
-      const marqueeContent = marqueeInnerRef.current.querySelector('.marquee__part') as HTMLElement;
-      if (!marqueeContent) return;
-      const contentWidth = marqueeContent.offsetWidth;
-      if (contentWidth === 0) return;
-
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
-
-      animationRef.current = gsap.to(marqueeInnerRef.current, {
-        x: -contentWidth,
-        duration: 20,
-        ease: 'none',
-        repeat: -1
-      });
-    } else {
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
-      if (marqueeInnerRef.current) {
-        gsap.set(marqueeInnerRef.current, { x: 0 });
-      }
-    }
-
-    return () => {
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
-    };
-  }, [isExpanded, exp.company]);
 
   return (
     <motion.div
@@ -93,32 +57,9 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
         }
       }}
     >
-      {/* Marquee overlay when expanded */}
-      {isExpanded && (
-        <div 
-          ref={marqueeRef}
-          className="absolute inset-0 bg-brand overflow-hidden pointer-events-none z-10"
-        >
-          <div className="marquee__inner-wrap h-full w-full overflow-hidden">
-            <div 
-              ref={marqueeInnerRef}
-              className="marquee__inner flex items-center h-full w-fit"
-            >
-              {[...Array(8)].map((_, idx) => (
-                <div key={idx} className="marquee__part flex items-center shrink-0">
-                  <span className="text-3xl font-bold lowercase px-8 whitespace-nowrap text-black">
-                    {exp.company}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className={`relative z-20 ${isExpanded ? 'text-black' : ''}`}>
+      <div className={`relative ${isExpanded ? 'text-black' : ''}`}>
         <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
-          <h3 className={`text-3xl font-bold transition-colors lowercase ${isExpanded ? 'opacity-0' : 'group-hover:text-brand'}`}>
+          <h3 className={`text-3xl font-bold transition-colors lowercase ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
             {exp.company}
           </h3>
           <div className="flex items-center gap-4">
@@ -247,9 +188,8 @@ export default function ExperiencePage() {
         </motion.div>
 
         <section className="mb-48">
-          <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3 relative z-30">
-            <Briefcase size={14} className="text-brand" />
-            <span>experience</span>
+          <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
+            <Briefcase size={14} className="text-brand" /> experience
           </h2>
           <div className="space-y-8">
             {experiences.map((exp, i) => (
@@ -292,24 +232,6 @@ export default function ExperiencePage() {
       <style jsx global>{`
         .text-brand { color: #B19EEF; }
         .bg-brand { background-color: #B19EEF; }
-        .marquee__inner-wrap {
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-        }
-        .marquee__inner {
-          display: flex;
-          align-items: center;
-          position: relative;
-          height: 100%;
-          width: fit-content;
-          will-change: transform;
-        }
-        .marquee__part {
-          display: flex;
-          align-items: center;
-          flex-shrink: 0;
-        }
       `}</style>
     </div>
   );
