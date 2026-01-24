@@ -105,29 +105,6 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
       .set(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .set(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0)
       .to([marqueeRef.current, marqueeInnerRef.current], { y: '0%' }, 0);
-    
-    if (description && descriptionRef.current && itemRef.current) {
-      setIsOpen(true);
-      descriptionRef.current.style.display = 'block';
-      gsap.fromTo(descriptionRef.current, 
-        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0, marginTop: 0 },
-        { 
-          opacity: 1, 
-          maxHeight: '400px',
-          paddingTop: '2rem',
-          paddingBottom: '2rem',
-          marginTop: 0,
-          duration: 0.5, 
-          ease: 'power2.out' 
-        }
-      );
-      // Expand the menu item to push other items down
-      gsap.to(itemRef.current, {
-        flex: '1.5',
-        duration: 0.5,
-        ease: 'power2.out'
-      });
-    }
   };
 
   const handleMouseLeave = (ev: React.MouseEvent) => {
@@ -141,65 +118,33 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
       .timeline({ defaults: animationDefaults })
       .to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
-    
-    if (description && descriptionRef.current && itemRef.current) {
-      gsap.to(descriptionRef.current, {
-        opacity: 0,
-        maxHeight: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        marginTop: 0,
-        duration: 0.4,
-        ease: 'power2.in',
-        onComplete: () => {
-          setIsOpen(false);
-          if (descriptionRef.current) {
-            descriptionRef.current.style.display = 'none';
-          }
-        }
-      });
-      // Collapse the menu item back
-      gsap.to(itemRef.current, {
-        flex: '1',
-        duration: 0.4,
-        ease: 'power2.in'
-      });
-    }
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!description || !descriptionRef.current) return;
     const newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
+    
     if (newIsOpen) {
       descriptionRef.current.style.display = 'block';
       gsap.fromTo(descriptionRef.current,
-        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0, marginTop: 0 },
+        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
         { 
           opacity: 1, 
           maxHeight: '400px',
           paddingTop: '2rem',
           paddingBottom: '2rem',
-          marginTop: 0,
           duration: 0.5, 
           ease: 'power2.out' 
         }
       );
-      if (itemRef.current) {
-        gsap.to(itemRef.current, {
-          flex: '1.5',
-          duration: 0.5,
-          ease: 'power2.out'
-        });
-      }
     } else {
       gsap.to(descriptionRef.current, {
         opacity: 0,
         maxHeight: 0,
         paddingTop: 0,
         paddingBottom: 0,
-        marginTop: 0,
         duration: 0.4,
         ease: 'power2.in',
         onComplete: () => {
@@ -208,13 +153,6 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
           }
         }
       });
-      if (itemRef.current) {
-        gsap.to(itemRef.current, {
-          flex: '1',
-          duration: 0.4,
-          ease: 'power2.in'
-        });
-      }
     }
   };
 
@@ -225,7 +163,7 @@ function MenuItem({ link, text, image, speed = 15, textColor = '#fff', marqueeBg
         href={link || '#'}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
+        onClick={handleClick}
         style={{ color: textColor }}
       >
         {text}

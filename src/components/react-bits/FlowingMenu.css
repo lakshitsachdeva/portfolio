@@ -113,6 +113,7 @@
   max-height: 0;
   opacity: 0;
   margin-top: 0;
+  will-change: max-height, opacity, padding;
 }
 
 .menu__item-description > * {
