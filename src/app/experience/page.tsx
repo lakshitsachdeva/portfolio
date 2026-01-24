@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import BlurText from "@/components/react-bits/BlurText";
 import { Briefcase, GraduationCap, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
 export default function ExperiencePage() {
@@ -94,68 +94,153 @@ export default function ExperiencePage() {
             <Briefcase size={14} className="text-brand" /> experience
           </h2>
           <div className="space-y-8">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative p-8 rounded-3xl border border-brand/20 bg-brand/5 backdrop-blur-sm hover:bg-brand/10 hover:border-brand/40 transition-all cursor-pointer"
-                onClick={() => {
-                  const newIndex = expandedIndex === i ? null : i;
-                  setExpandedIndex(newIndex);
-                  const descEl = document.getElementById(`desc-${i}`);
-                  if (descEl) {
-                    if (newIndex === i) {
-                      gsap.fromTo(descEl,
-                        { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
-                        { opacity: 1, maxHeight: '500px', paddingTop: '1.5rem', paddingBottom: '1.5rem', duration: 0.4, ease: 'power2.out' }
-                      );
-                    } else {
-                      gsap.to(descEl, {
-                        opacity: 0,
-                        maxHeight: 0,
-                        paddingTop: 0,
-                        paddingBottom: 0,
-                        duration: 0.3,
-                        ease: 'power2.in'
-                      });
+            {experiences.map((exp, i) => {
+              const ExperienceCard = () => {
+                const marqueeRef = useRef<HTMLDivElement>(null);
+                const marqueeInnerRef = useRef<HTMLDivElement>(null);
+                const animationRef = useRef<gsap.core.Tween | null>(null);
+                const isExpanded = expandedIndex === i;
+
+                useEffect(() => {
+                  if (isExpanded && marqueeInnerRef.current) {
+                    const marqueeContent = marqueeInnerRef.current.querySelector('.marquee__part');
+                    if (!marqueeContent) return;
+                    const contentWidth = marqueeContent.offsetWidth;
+                    if (contentWidth === 0) return;
+
+                    if (animationRef.current) {
+                      animationRef.current.kill();
+                    }
+
+                    animationRef.current = gsap.to(marqueeInnerRef.current, {
+                      x: -contentWidth,
+                      duration: 20,
+                      ease: 'none',
+                      repeat: -1
+                    });
+                  } else {
+                    if (animationRef.current) {
+                      animationRef.current.kill();
+                    }
+                    if (marqueeInnerRef.current) {
+                      gsap.set(marqueeInnerRef.current, { x: 0 });
                     }
                   }
-                }}
-              >
-                <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
-                  <h3 className="text-3xl font-bold group-hover:text-brand transition-colors lowercase">{exp.company}</h3>
-                  <div className="flex items-center gap-4">
-                    <span className="text-zinc-500 text-sm font-medium lowercase">{exp.date}</span>
-                    <ChevronDown 
-                      size={20} 
-                      className={`text-brand transition-transform duration-300 ${expandedIndex === i ? 'rotate-180' : ''}`}
-                    />
-                  </div>
-                </div>
-                <p className="text-brand/90 text-lg font-medium mb-6 lowercase">{exp.role}</p>
-                <div
-                  id={`desc-${i}`}
-                  className="overflow-hidden"
-                  style={{ maxHeight: 0, opacity: 0 }}
-                >
-                  <p className="text-zinc-300 leading-relaxed text-lg mb-8 font-medium lowercase">
-                    {exp.description}
-                  </p>
-                  {exp.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-3">
-                      {exp.tags.map(tag => (
-                        <span key={tag} className="text-[9px] font-medium lowercase px-3 py-1.5 bg-brand/20 text-brand rounded-full border border-brand/30">
-                          {tag}
-                        </span>
-                      ))}
+
+                  return () => {
+                    if (animationRef.current) {
+                      animationRef.current.kill();
+                    }
+                  };
+                }, [isExpanded, exp.company]);
+
+                return (
+                  <motion.div
+                    key={exp.company}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`group relative p-8 rounded-3xl border backdrop-blur-sm transition-all cursor-pointer overflow-hidden ${
+                      isExpanded 
+                        ? 'bg-brand border-brand text-black' 
+                        : 'border-brand/20 bg-brand/5 hover:bg-brand/10 hover:border-brand/40 text-white'
+                    }`}
+                    onClick={() => {
+                      const newIndex = expandedIndex === i ? null : i;
+                      setExpandedIndex(newIndex);
+                      const descEl = document.getElementById(`desc-${i}`);
+                      if (descEl) {
+                        if (newIndex === i) {
+                          gsap.fromTo(descEl,
+                            { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
+                            { opacity: 1, maxHeight: '500px', paddingTop: '1.5rem', paddingBottom: '1.5rem', duration: 0.4, ease: 'power2.out' }
+                          );
+                        } else {
+                          gsap.to(descEl, {
+                            opacity: 0,
+                            maxHeight: 0,
+                            paddingTop: 0,
+                            paddingBottom: 0,
+                            duration: 0.3,
+                            ease: 'power2.in'
+                          });
+                        }
+                      }
+                    }}
+                  >
+                    {/* Marquee overlay when expanded */}
+                    {isExpanded && (
+                      <div 
+                        ref={marqueeRef}
+                        className="absolute inset-0 bg-brand overflow-hidden pointer-events-none z-10"
+                      >
+                        <div className="marquee__inner-wrap h-full w-full overflow-hidden">
+                          <div 
+                            ref={marqueeInnerRef}
+                            className="marquee__inner flex items-center h-full w-fit"
+                          >
+                            {[...Array(8)].map((_, idx) => (
+                              <div key={idx} className="marquee__part flex items-center flex-shrink-0">
+                                <span className="text-3xl font-bold lowercase px-8 whitespace-nowrap text-black">
+                                  {exp.company}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className={`relative z-20 ${isExpanded ? 'text-black' : ''}`}>
+                      <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
+                        <h3 className={`text-3xl font-bold transition-colors lowercase ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
+                          {exp.company}
+                        </h3>
+                        <div className="flex items-center gap-4">
+                          <span className={`text-sm font-medium lowercase ${isExpanded ? 'text-black/60' : 'text-zinc-500'}`}>
+                            {exp.date}
+                          </span>
+                          <ChevronDown 
+                            size={20} 
+                            className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-black' : 'text-brand'}`}
+                          />
+                        </div>
+                      </div>
+                      <p className={`text-lg font-medium mb-6 lowercase ${isExpanded ? 'text-black/80' : 'text-brand/90'}`}>
+                        {exp.role}
+                      </p>
+                      <div
+                        id={`desc-${i}`}
+                        className="overflow-hidden"
+                        style={{ maxHeight: 0, opacity: 0 }}
+                      >
+                        <p className={`leading-relaxed text-lg mb-8 font-medium lowercase ${isExpanded ? 'text-black/70' : 'text-zinc-300'}`}>
+                          {exp.description}
+                        </p>
+                        {exp.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-3">
+                            {exp.tags.map(tag => (
+                              <span 
+                                key={tag} 
+                                className={`text-[9px] font-medium lowercase px-3 py-1.5 rounded-full border ${
+                                  isExpanded 
+                                    ? 'bg-black/20 text-black border-black/30' 
+                                    : 'bg-brand/20 text-brand border-brand/30'
+                                }`}
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                  </motion.div>
+                );
+              };
+              return <ExperienceCard key={exp.company} />;
+            })}
           </div>
         </section>
 
@@ -187,6 +272,24 @@ export default function ExperiencePage() {
       <style jsx global>{`
         .text-brand { color: #B19EEF; }
         .bg-brand { background-color: #B19EEF; }
+        .marquee__inner-wrap {
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+        }
+        .marquee__inner {
+          display: flex;
+          align-items: center;
+          position: relative;
+          height: 100%;
+          width: fit-content;
+          will-change: transform;
+        }
+        .marquee__part {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
       `}</style>
     </div>
   );
