@@ -71,6 +71,7 @@ export default function BlogPostPage() {
             speed={8}
           />
         </div>
+        <div className="fixed inset-0 z-[1] bg-black/40" />
         <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
           <div className="space-y-4 animate-pulse">
             <div className="h-12 bg-zinc-900 rounded w-3/4" />
