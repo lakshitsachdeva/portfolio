@@ -46,13 +46,13 @@ export default function Home() {
     {
       title: "Intent2Model - LLM AutoML Agent",
       description: "LLM-guided AutoML agent that uploads CSV files, chats with AI, and gets trained models. Features beautiful charts, model comparison, smart predictions, and Gemini-powered pipeline generation.",
-      tags: ["Python", "TypeScript", "FastAPI", "Gemini", "AutoML"],
+      tags: ["Python", "TypeScript",  "AutoML"],
       variant: "blue" as const,
       github: "https://github.com/lakshitsachdeva/intent2model",
       icon: Sparkles
     },
     {
-      title: "Bajaj Finserv Claims Processor",
+      title: "Claims Processor",
       description: "Intelligent insurance claims processing system leveraging Cloud LLM APIs, RAG, and Gmail integration. Automated claim evaluation with structured query parsing, confidence scoring, and FAISS-powered semantic search.",
       tags: ["Python", "FastAPI", "RAG", "FAISS", "Streamlit", "Gmail API"],
       variant: "blue" as const,
