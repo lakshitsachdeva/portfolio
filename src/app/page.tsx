@@ -12,14 +12,6 @@ import { useMemo } from "react";
 export default function Home() {
   const projects = useMemo(() => [
     {
-      title: "Neural Vulnerability Engine",
-      description: "Architecting a hybrid CNN-LSTM architecture integrated with CLIP-based RAG for autonomous vulnerability discovery and security reasoning in large-scale systems.",
-      tags: ["PyTorch", "CLIP", "FAISS", "RAG"],
-      variant: "blue" as const,
-      github: "https://github.com/lakshitsachdeva",
-      icon: BrainCircuit
-    },
-    {
       title: "Vision-AI Waste Management",
       description: "Deployed a custom ResNet-50 backbone with 95.45% inference accuracy. Engineered real-time edge processing on Arduino for automated industrial waste classification.",
       tags: ["TensorFlow", "OpenCV", "Edge AI", "IoT"],
