@@ -5,7 +5,7 @@ import ClickSpark from "@/components/react-bits/ClickSpark";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import PixelCard from "@/components/react-bits/PixelCard";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, BrainCircuit, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
 import Link from "next/link";
 import { useMemo } from "react";
 
