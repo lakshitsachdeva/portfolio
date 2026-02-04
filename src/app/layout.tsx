@@ -7,11 +7,10 @@ export const metadata: Metadata = {
   description: "Portfolio of Lakshit Sachdeva, a Computer Science student specializing in Machine Learning and Full-Stack Development.",
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
     ],
     apple: [
-      { url: '/apple-icon.svg', type: 'image/svg+xml' },
+      { url: '/apple-icon.png', type: 'image/png' },
     ],
   },
 };

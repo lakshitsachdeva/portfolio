@@ -126,11 +126,11 @@ export default function ExperiencePage() {
 
   const experiences = [
     {
-      company: "ELGI EQUIPMENTS BANGALORE",
-      role: "upcoming intern",
-      date: "coming soon",
-      description: "building something crazy at elgi equipments, bangalore. working on innovative solutions and cutting-edge projects in the industrial equipment space.",
-      tags: []
+      company: "open to opportunities",
+      role: "looking for roles in sde, ml & ai",
+      date: "2025",
+      description: "actively seeking full-time and internship opportunities in software development, machine learning, and artificial intelligence. interested in building scalable systems, ml pipelines, and intelligent applications.",
+      tags: ["sde", "ml", "ai", "full-stack"]
     },
     {
       company: "AMAZON, INDIA",

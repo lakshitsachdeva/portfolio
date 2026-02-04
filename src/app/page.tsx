@@ -5,12 +5,21 @@ import ClickSpark from "@/components/react-bits/ClickSpark";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import PixelCard from "@/components/react-bits/PixelCard";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, FileDown, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
 import Link from "next/link";
 import { useMemo } from "react";
 
 export default function Home() {
   const projects = useMemo(() => [
+    {
+      title: "drift-ml: LLM AutoML Agent",
+      description: "LLM-guided AutoML agent that uploads CSV files, chats with AI, and gets trained models. Features beautiful charts, model comparison, smart predictions, and Gemini-powered pipeline generation.",
+      tags: ["Python", "TypeScript", "AutoML"],
+      variant: "blue" as const,
+      github: "https://github.com/lakshitsachdeva/intent2model",
+      live: "https://drift-ml.vercel.app",
+      icon: Sparkles
+    },
     {
       title: "Vision-AI Waste Management",
       description: "Deployed a custom ResNet-50 backbone with 95.45% inference accuracy. Engineered real-time edge processing on Arduino for automated industrial waste classification.",
@@ -42,14 +51,6 @@ export default function Home() {
       variant: "blue" as const,
       github: "https://github.com/lakshitsachdeva/captcha-x-final",
       icon: Shield
-    },
-    {
-      title: "Intent2Model - LLM AutoML Agent",
-      description: "LLM-guided AutoML agent that uploads CSV files, chats with AI, and gets trained models. Features beautiful charts, model comparison, smart predictions, and Gemini-powered pipeline generation.",
-      tags: ["Python", "TypeScript",  "AutoML"],
-      variant: "blue" as const,
-      github: "https://github.com/lakshitsachdeva/intent2model",
-      icon: Sparkles
     },
     {
       title: "Claims Processor",
@@ -116,6 +117,9 @@ export default function Home() {
               <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
                 <Github size={16} /> github
               </a>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                <FileDown size={16} /> resume
+              </a>
             </motion.div>
           </header>
 
@@ -151,36 +155,53 @@ export default function Home() {
                   transition={{ delay: i * 0.1, duration: 0.8 }}
                   className="group"
                 >
-                  <PixelCard variant={project.variant} speed={300} className="w-full !h-[500px] transition-transform duration-500 group-hover:scale-[1.02]">
-                    <div className="absolute inset-0 p-10 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none">
-                      <div className="mb-6 p-3 bg-white/5 rounded-2xl w-fit backdrop-blur-sm border border-white/10">
-                        {(() => {
-                          const IconComponent = project.icon;
-                          return <IconComponent size={24} className="text-blue-400" />;
-                        })()}
+                  <PixelCard variant={project.variant} speed={300} className="w-full !h-[560px] transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className="absolute inset-x-0 bottom-0 top-auto min-h-[480px] flex flex-col justify-start p-6 sm:p-8 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none">
+                      <div className="flex flex-col gap-3 items-start w-full min-w-0">
+                        <div className="w-12 h-12 flex items-center justify-center shrink-0 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10">
+                          {(() => {
+                            const IconComponent = project.icon;
+                            return <IconComponent size={24} className="text-blue-400 shrink-0" />;
+                          })()}
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-bold leading-tight group-hover:text-brand transition-colors lowercase break-words w-full text-left">
+                          {project.title}
+                        </h3>
+                        <p className="text-zinc-400 text-sm leading-relaxed font-medium lowercase break-words line-clamp-3 w-full text-left">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 sm:gap-3 w-full">
+                          {project.tags.map(tag => (
+                            <span key={tag} className="text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 bg-zinc-900/80 text-zinc-300 rounded-full border border-white/5 backdrop-blur-sm">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex flex-wrap gap-4">
+                          {"live" in project && project.live && (
+                            <a 
+                              href={project.live} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-white hover:text-brand transition-colors text-sm font-medium lowercase pointer-events-auto"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <ExternalLink size={16} className="shrink-0" /> live
+                            </a>
+                          )}
+                          {project.github && (
+                            <a 
+                              href={project.github} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-white hover:text-brand transition-colors text-sm font-medium lowercase pointer-events-auto"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Github size={16} className="shrink-0" /> repo
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <h3 className="text-3xl font-bold mb-4 leading-tight group-hover:text-brand transition-colors lowercase">{project.title}</h3>
-                      <p className="text-zinc-400 text-sm mb-8 leading-relaxed font-medium lowercase">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-3 mb-6">
-                        {project.tags.map(tag => (
-                          <span key={tag} className="text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 bg-zinc-900/80 text-zinc-300 rounded-full border border-white/5 backdrop-blur-sm">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      {project.github && (
-                        <a 
-                          href={project.github} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-white hover:text-brand transition-colors text-sm font-medium lowercase pointer-events-auto"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <Github size={16} /> repo
-                        </a>
-                      )}
                     </div>
                   </PixelCard>
                 </motion.div>
