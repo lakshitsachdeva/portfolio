@@ -11,7 +11,6 @@ const navItems = [
   { name: 'About', path: '/about' },
   { name: 'Experience', path: '/experience' },
   { name: 'Blog', path: '/blog' },
-  { name: 'Resume', path: '/resume.pdf', external: true },
 ] as const;
 
 function Navbar() {
@@ -24,7 +23,6 @@ function Navbar() {
           <li key={item.path}>
             <Link
               href={item.path}
-              {...("external" in item && item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={cn(
                 "relative px-4 py-2 text-xs font-medium lowercase transition-colors",
                 pathname === item.path ? "text-white" : "text-zinc-500 hover:text-zinc-300"

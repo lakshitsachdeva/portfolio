@@ -5,7 +5,8 @@ import ClickSpark from "@/components/react-bits/ClickSpark";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import PixelCard from "@/components/react-bits/PixelCard";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, FileDown, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 
@@ -88,38 +89,51 @@ export default function Home() {
       >
         <main className="relative z-10 mx-auto max-w-6xl px-6 py-32 sm:px-12 lg:px-16">
           {/* Hero Section */}
-          <header className="flex flex-col gap-8 mb-40">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <BlurText 
-                text="hi, i'm lakshit sachdeva" 
-                className="text-6xl sm:text-9xl font-bold tracking-tighter lowercase" 
-                delay={100}
-                animateBy="words"
-              />
-            </motion.div>
+          <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-12 sm:gap-16 mb-40">
+            <div className="flex flex-col gap-8 order-2 sm:order-1">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <BlurText 
+                  text="hi, i'm lakshit sachdeva" 
+                  className="text-6xl sm:text-9xl font-bold tracking-tighter lowercase" 
+                  delay={100}
+                  animateBy="words"
+                />
+              </motion.div>
             
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="flex flex-wrap gap-8 text-sm font-medium lowercase text-zinc-500"
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="flex flex-wrap gap-8 text-sm font-medium lowercase text-zinc-500"
+              >
+                <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                  <Mail size={16} /> lakshits.official@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                  <Linkedin size={16} /> linkedin
+                </a>
+                <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                  <Github size={16} /> github
+                </a>
+              </motion.div>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="shrink-0 order-1 sm:order-2"
             >
-              <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
-                <Mail size={16} /> lakshits.official@gmail.com
-              </a>
-              <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
-                <Linkedin size={16} /> linkedin
-              </a>
-              <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
-                <Github size={16} /> github
-              </a>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
-                <FileDown size={16} /> resume
-              </a>
+              <Image
+                src="/face.png"
+                alt="lakshit sachdeva"
+                width={128}
+                height={128}
+                className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover border-2 border-white/10 ring-2 ring-brand/20"
+              />
             </motion.div>
           </header>
 
