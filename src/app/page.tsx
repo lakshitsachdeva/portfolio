@@ -169,8 +169,8 @@ export default function Home() {
                   transition={{ delay: i * 0.1, duration: 0.8 }}
                   className="group"
                 >
-                  <PixelCard variant={project.variant} speed={300} className="w-full !h-[560px] transition-transform duration-500 group-hover:scale-[1.02]">
-                    <div className="absolute inset-x-0 bottom-0 top-auto min-h-[480px] flex flex-col justify-start p-6 sm:p-8 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none">
+                  <PixelCard variant={project.variant} speed={300} className="w-full !h-[480px] sm:!h-[560px] transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className="absolute inset-0 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:min-h-[480px] flex flex-col justify-end sm:justify-start p-6 sm:p-8 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none">
                       <div className="flex flex-col gap-3 items-start w-full min-w-0">
                         <div className="w-12 h-12 flex items-center justify-center shrink-0 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10">
                           {(() => {
@@ -181,7 +181,7 @@ export default function Home() {
                         <h3 className="text-2xl sm:text-3xl font-bold leading-tight group-hover:text-brand transition-colors lowercase break-words w-full text-left">
                           {project.title}
                         </h3>
-                        <p className="text-zinc-400 text-sm leading-relaxed font-medium lowercase break-words line-clamp-3 w-full text-left">
+                        <p className="text-zinc-400 text-sm leading-relaxed font-medium lowercase break-words line-clamp-2 sm:line-clamp-3 w-full text-left">
                           {project.description}
                         </p>
                         <div className="flex flex-wrap gap-2 sm:gap-3 w-full">
