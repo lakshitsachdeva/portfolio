@@ -3,18 +3,23 @@
 import { motion } from "framer-motion";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import BlurText from "@/components/react-bits/BlurText";
-import { Briefcase, GraduationCap, ChevronDown } from "lucide-react";
+import { Briefcase, GraduationCap, ChevronDown, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { gsap } from "gsap";
 
+interface ExperienceItem {
+  company: string;
+  role: string;
+  date: string;
+  description?: string;
+  bullets?: string[];
+  tags: string[];
+  location?: string;
+  website?: string;
+}
+
 interface ExperienceCardProps {
-  exp: {
-    company: string;
-    role: string;
-    date: string;
-    description: string;
-    tags: string[];
-  };
+  exp: ExperienceItem;
   index: number;
   expandedIndex: number | null;
   setExpandedIndex: (index: number | null) => void;
@@ -55,10 +60,11 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
         
         const descEl = document.getElementById(`desc-${index}`);
         if (descEl) {
+          const expandedHeight = `${descEl.scrollHeight + 24}px`;
           if (newIndex === index) {
             gsap.fromTo(descEl,
               { opacity: 0, maxHeight: 0, paddingTop: 0, paddingBottom: 0 },
-              { opacity: 1, maxHeight: '500px', paddingTop: '1.5rem', paddingBottom: '1.5rem', duration: 0.4, ease: 'power2.out' }
+              { opacity: 1, maxHeight: expandedHeight, paddingTop: '1.5rem', paddingBottom: '1.5rem', duration: 0.4, ease: 'power2.out' }
             );
           } else {
             gsap.to(descEl, {
@@ -75,11 +81,11 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
     >
       <div className={`relative ${isExpanded ? 'text-black' : ''}`}>
         <div className="mb-4 flex flex-col justify-between gap-2 md:flex-row md:items-baseline">
-          <h3 className={`break-words text-xl font-bold lowercase transition-colors sm:text-2xl md:text-3xl ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
+          <h3 className={`break-words text-xl font-bold transition-colors sm:text-2xl md:text-3xl ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
             {exp.company}
           </h3>
           <div className="flex items-center gap-3 sm:gap-4">
-            <span className={`text-[11px] font-medium lowercase sm:text-sm ${isExpanded ? 'text-black/60' : 'text-zinc-500'}`}>
+            <span className={`text-[11px] font-medium sm:text-sm ${isExpanded ? 'text-black/60' : 'text-zinc-500'}`}>
               {exp.date}
             </span>
             <ChevronDown 
@@ -88,17 +94,60 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
             />
           </div>
         </div>
-        <p className={`mb-5 text-base font-medium lowercase sm:mb-6 sm:text-lg ${isExpanded ? 'text-black/80' : 'text-brand/90'}`}>
+        <p className={`mb-4 text-base font-medium sm:mb-5 sm:text-lg ${isExpanded ? 'text-black/80' : 'text-brand/90'}`}>
           {exp.role}
         </p>
+        {(exp.location || exp.website) && (
+          <div className="mb-5 flex flex-wrap items-center gap-2.5 sm:mb-6">
+            {exp.location && (
+              <span
+                className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-medium sm:text-[11px] ${
+                  isExpanded
+                    ? 'border-black/25 bg-black/10 text-black/80'
+                    : 'border-white/10 bg-black/30 text-zinc-300'
+                }`}
+              >
+                {exp.location}
+              </span>
+            )}
+            {exp.website && (
+              <a
+                href={exp.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className={`pointer-events-auto inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[10px] font-medium transition-colors sm:text-[11px] ${
+                  isExpanded
+                    ? 'border-black/25 bg-black/10 text-black/80 hover:bg-black/20'
+                    : 'border-brand/40 bg-brand/15 text-brand hover:bg-brand/25'
+                }`}
+              >
+                www.athair.app <ExternalLink size={12} />
+              </a>
+            )}
+          </div>
+        )}
         <div
           id={`desc-${index}`}
           className="overflow-hidden"
           style={{ maxHeight: 0, opacity: 0 }}
         >
-          <p className={`mb-6 text-base font-medium leading-relaxed lowercase sm:mb-8 sm:text-lg ${isExpanded ? 'text-black/70' : 'text-zinc-300'}`}>
-            {exp.description}
-          </p>
+          {exp.bullets && exp.bullets.length > 0 ? (
+            <ul className={`mb-6 space-y-3 sm:mb-8 ${isExpanded ? 'text-black/75' : 'text-zinc-300'}`}>
+              {exp.bullets.map((bullet, bulletIndex) => (
+                <li key={`${exp.company}-bullet-${bulletIndex}`} className="flex items-start gap-3 text-sm font-medium leading-relaxed sm:text-base">
+                  <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${isExpanded ? 'bg-black/60' : 'bg-brand'}`} />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            exp.description && (
+              <p className={`mb-6 text-base font-medium leading-relaxed sm:mb-8 sm:text-lg ${isExpanded ? 'text-black/70' : 'text-zinc-300'}`}>
+                {exp.description}
+              </p>
+            )
+          )}
           {exp.tags.length > 0 && (
             <div className="flex flex-wrap gap-3">
               {exp.tags.map(tag => (
@@ -124,13 +173,20 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
 export default function ExperiencePage() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const experiences = [
+  const experiences: ExperienceItem[] = [
     {
-      company: "open to opportunities",
-      role: "looking for roles in sde, ml & ai",
-      date: "2025",
-      description: "actively seeking full-time and internship opportunities in software development, machine learning, and artificial intelligence. interested in building scalable systems, ml pipelines, and intelligent applications.",
-      tags: ["sde", "ml", "ai", "full-stack"]
+      company: "Athair",
+      role: "Founder",
+      date: "november 2025 - present",
+      location: "mumbai, india",
+      website: "https://www.athair.app",
+      bullets: [
+        "Building Athair, an AI-powered trade stress-testing engine that validates stock trade ideas before capital deployment, designed to bring institutional-grade risk frameworks to retail and independent investors.",
+        "Engineered multi-agent LLM reasoning pipelines for thesis decomposition, volatility regime detection, and fat-tailed Monte Carlo simulation with probabilistic confidence scoring.",
+        "Developed scenario analysis and fragility detection modules that surface overfitting and hidden tail risks in user-defined trade theses, mimicking the pre-trade validation workflows of systematic hedge funds.",
+        "Architected the full product stack independently, from quantitative modeling and LLM integration to system design and product roadmap."
+      ],
+      tags: ["founder", "llm systems", "quant risk", "product"]
     },
     {
       company: "AMAZON, INDIA",

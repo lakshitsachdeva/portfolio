@@ -5,13 +5,21 @@ import ClickSpark from "@/components/react-bits/ClickSpark";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import PixelCard from "@/components/react-bits/PixelCard";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 
 export default function Home() {
   const projects = useMemo(() => [
+    {
+      title: "Athair - AI Trade Stress Testing",
+      description: "AI-powered trade stress-testing engine that validates stock trade ideas before capital deployment with institutional-style risk frameworks, regime-aware simulation, and confidence scoring.",
+      tags: ["LLM Agents", "Quant Risk", "Monte Carlo", "Trading"],
+      variant: "blue" as const,
+      live: "https://www.athair.app",
+      icon: TrendingUp
+    },
     {
       title: "drift-ml: LLM AutoML Agent",
       description: "LLM-guided AutoML agent that uploads CSV files, chats with AI, and gets trained models. Features beautiful charts, model comparison, smart predictions, and Gemini-powered pipeline generation.",
@@ -146,7 +154,16 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
-                building stuff at the intersection of <span className="text-white font-medium italic px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves.
+                building stuff at the intersection of <span className="text-white font-medium italic px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves. in founder mode at{" "}
+                <a
+                  href="https://www.athair.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-brand underline decoration-brand/70 underline-offset-4 transition-colors hover:text-white"
+                >
+                  athair.app
+                </a>
+                .
               </p>
             </motion.div>
           </section>
