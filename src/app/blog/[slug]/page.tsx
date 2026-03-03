@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import PixelBlast from '@/components/react-bits/PixelBlast';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
@@ -21,7 +21,6 @@ interface BlogPost {
 
 export default function BlogPostPage() {
   const params = useParams();
-  const router = useRouter();
   const slug = params.slug as string;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
@@ -73,7 +72,7 @@ export default function BlogPostPage() {
           />
         </div>
         <div className="fixed inset-0 z-[1] bg-black/40" />
-        <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
+        <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
           <div className="space-y-4 animate-pulse">
             <div className="h-12 bg-zinc-900 rounded w-3/4" />
             <div className="h-4 bg-zinc-900 rounded w-1/2" />
@@ -101,9 +100,9 @@ export default function BlogPostPage() {
           />
         </div>
         <div className="fixed inset-0 z-[1] bg-black/40" />
-        <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
+        <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 lowercase">post not found</h1>
+            <h1 className="mb-4 text-3xl font-bold lowercase sm:text-4xl">post not found</h1>
             <Link href="/blog" className="text-brand hover:text-white transition-colors lowercase">
               ← back to journal
             </Link>
@@ -131,7 +130,7 @@ export default function BlogPostPage() {
       {/* Black overlay for readability */}
       <div className="fixed inset-0 z-[1] bg-black/40" />
 
-      <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
+      <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -139,18 +138,18 @@ export default function BlogPostPage() {
         >
           <Link 
             href="/blog" 
-            className="inline-flex items-center gap-2 text-zinc-500 hover:text-white transition-colors mb-12 lowercase text-sm font-medium"
+            className="mb-8 inline-flex items-center gap-2 text-sm font-medium lowercase text-zinc-500 transition-colors hover:text-white sm:mb-12"
           >
             <ArrowLeft size={16} /> back to journal
           </Link>
 
           <article>
-            <header className="mb-12">
-              <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter mb-6 lowercase">
+            <header className="mb-8 sm:mb-12">
+              <h1 className="mb-5 break-words text-3xl font-bold tracking-tighter lowercase sm:mb-6 sm:text-5xl lg:text-7xl">
                 {post.title}
               </h1>
               
-              <div className="flex flex-wrap items-center gap-6 text-zinc-500 text-sm font-medium mb-8">
+              <div className="mb-6 flex flex-wrap items-center gap-4 text-xs font-medium text-zinc-500 sm:mb-8 sm:gap-6 sm:text-sm">
                 <div className="flex items-center gap-2">
                   <Calendar size={14} />
                   <span className="lowercase">
@@ -174,10 +173,10 @@ export default function BlogPostPage() {
               </div>
             </header>
 
-            <div className="prose prose-invert prose-lg max-w-none">
+            <div className="prose prose-invert max-w-none break-words sm:prose-lg">
               {post.content ? (
                 <div 
-                  className="text-zinc-300 leading-relaxed font-medium lowercase"
+                  className="text-sm font-medium leading-relaxed lowercase text-zinc-300 sm:text-base"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               ) : (

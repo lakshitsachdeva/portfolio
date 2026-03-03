@@ -29,7 +29,7 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className={`group relative p-8 rounded-3xl border backdrop-blur-sm transition-all cursor-pointer overflow-hidden ${
+      className={`group relative cursor-pointer overflow-hidden rounded-2xl border p-5 backdrop-blur-sm transition-all sm:rounded-3xl sm:p-8 ${
         isExpanded 
           ? 'bg-brand border-brand text-black' 
           : 'border-brand/20 bg-brand/5 hover:bg-brand/10 hover:border-brand/40 text-white'
@@ -74,21 +74,21 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
       }}
     >
       <div className={`relative ${isExpanded ? 'text-black' : ''}`}>
-        <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
-          <h3 className={`text-3xl font-bold transition-colors lowercase ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
+        <div className="mb-4 flex flex-col justify-between gap-2 md:flex-row md:items-baseline">
+          <h3 className={`break-words text-xl font-bold lowercase transition-colors sm:text-2xl md:text-3xl ${isExpanded ? 'text-black' : 'group-hover:text-brand'}`}>
             {exp.company}
           </h3>
-          <div className="flex items-center gap-4">
-            <span className={`text-sm font-medium lowercase ${isExpanded ? 'text-black/60' : 'text-zinc-500'}`}>
+          <div className="flex items-center gap-3 sm:gap-4">
+            <span className={`text-[11px] font-medium lowercase sm:text-sm ${isExpanded ? 'text-black/60' : 'text-zinc-500'}`}>
               {exp.date}
             </span>
             <ChevronDown 
-              size={20} 
+              size={18} 
               className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-black' : 'text-brand'}`}
             />
           </div>
         </div>
-        <p className={`text-lg font-medium mb-6 lowercase ${isExpanded ? 'text-black/80' : 'text-brand/90'}`}>
+        <p className={`mb-5 text-base font-medium lowercase sm:mb-6 sm:text-lg ${isExpanded ? 'text-black/80' : 'text-brand/90'}`}>
           {exp.role}
         </p>
         <div
@@ -96,7 +96,7 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
           className="overflow-hidden"
           style={{ maxHeight: 0, opacity: 0 }}
         >
-          <p className={`leading-relaxed text-lg mb-8 font-medium lowercase ${isExpanded ? 'text-black/70' : 'text-zinc-300'}`}>
+          <p className={`mb-6 text-base font-medium leading-relaxed lowercase sm:mb-8 sm:text-lg ${isExpanded ? 'text-black/70' : 'text-zinc-300'}`}>
             {exp.description}
           </p>
           {exp.tags.length > 0 && (
@@ -186,28 +186,28 @@ export default function ExperiencePage() {
         />
       </div>
 
-      <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
+      <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-32"
+          className="mb-16 sm:mb-32"
         >
           <BlurText 
             text="history" 
-            className="text-6xl sm:text-8xl font-bold tracking-tighter mb-8 lowercase" 
+            className="mb-6 text-5xl font-bold tracking-tighter lowercase sm:mb-8 sm:text-8xl" 
             delay={100}
           />
-          <p className="text-zinc-400 text-xl font-medium tracking-tight max-w-xl lowercase">
+          <p className="max-w-xl text-base font-medium tracking-tight lowercase text-zinc-400 sm:text-xl">
             where i've been and what i've been building
           </p>
         </motion.div>
 
-        <section className="mb-48">
-          <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
+        <section className="mb-20 sm:mb-48">
+          <h2 className="mb-8 flex items-center gap-3 text-xs font-medium lowercase text-zinc-500 sm:mb-16">
             <Briefcase size={14} className="text-brand" /> experience
           </h2>
-          <div className="space-y-8">
+          <div className="space-y-5 sm:space-y-8">
             {experiences.map((exp, i) => (
               <ExperienceCard
                 key={exp.company}
@@ -220,25 +220,25 @@ export default function ExperiencePage() {
           </div>
         </section>
 
-        <section className="mb-48">
-          <h2 className="text-zinc-500 lowercase text-xs font-medium mb-16 flex items-center gap-3">
+        <section className="mb-20 sm:mb-48">
+          <h2 className="mb-8 flex items-center gap-3 text-xs font-medium lowercase text-zinc-500 sm:mb-16">
             <GraduationCap size={14} className="text-brand" /> education
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
             {education.map((edu, i) => (
               <motion.div
                 key={edu.school}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-10 border border-brand/20 bg-brand/5 backdrop-blur-sm rounded-3xl hover:bg-brand/10 hover:border-brand/40 transition-all"
+                className="rounded-2xl border border-brand/20 bg-brand/5 p-6 backdrop-blur-sm transition-all hover:border-brand/40 hover:bg-brand/10 sm:rounded-3xl sm:p-10"
               >
-                <div className="flex justify-between items-start mb-6">
-                  <h3 className="text-2xl font-bold lowercase">{edu.school}</h3>
-                  <span className="text-zinc-500 text-[10px] font-medium lowercase">{edu.date}</span>
+                <div className="mb-5 flex items-start justify-between gap-3 sm:mb-6">
+                  <h3 className="break-words text-xl font-bold lowercase sm:text-2xl">{edu.school}</h3>
+                  <span className="text-[10px] font-medium lowercase text-zinc-500">{edu.date}</span>
                 </div>
-                <p className="text-brand text-sm font-medium mb-4 lowercase">{edu.degree}</p>
-                <p className="text-zinc-300 font-medium lowercase">{edu.details}</p>
+                <p className="mb-3 text-sm font-medium lowercase text-brand sm:mb-4">{edu.degree}</p>
+                <p className="text-sm font-medium lowercase text-zinc-300 sm:text-base">{edu.details}</p>
               </motion.div>
             ))}
           </div>

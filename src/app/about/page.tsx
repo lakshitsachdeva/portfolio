@@ -23,27 +23,27 @@ export default function AboutPage() {
         />
       </div>
 
-      <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
+      <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-32"
+          className="mb-16 sm:mb-32"
         >
           <BlurText 
             text="about" 
-            className="text-6xl sm:text-8xl font-bold tracking-tighter mb-12 lowercase" 
+            className="mb-8 text-5xl font-bold tracking-tighter lowercase sm:mb-12 sm:text-8xl" 
             delay={100}
           />
         </motion.div>
 
-        <section className="space-y-12 mb-32">
+        <section className="mb-16 space-y-8 sm:mb-32 sm:space-y-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-6 text-lg sm:text-xl text-zinc-300 leading-relaxed font-medium lowercase"
+            className="space-y-5 text-base font-medium leading-relaxed lowercase text-zinc-300 sm:space-y-6 sm:text-xl"
           >
             <p>
               i'm lakshit sachdeva, a developer interested in building ambitious systems at the intersection of machine learning and software
@@ -74,15 +74,15 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap gap-8 text-sm font-medium lowercase text-zinc-500"
+          className="flex flex-wrap gap-4 text-xs font-medium lowercase text-zinc-500 sm:gap-8 sm:text-sm"
         >
-          <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+          <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 break-all text-brand transition-colors hover:text-brand/80 sm:break-normal">
             <Mail size={16} /> lakshits.official@gmail.com
           </a>
-          <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+          <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand transition-colors hover:text-brand/80">
             <Linkedin size={16} /> linkedin
           </a>
-          <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+          <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand transition-colors hover:text-brand/80">
             <Github size={16} /> github
           </a>
         </motion.div>

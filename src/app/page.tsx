@@ -87,10 +87,10 @@ export default function Home() {
         sparkCount={20}
         duration={800}
       >
-        <main className="relative z-10 mx-auto max-w-6xl px-6 py-32 sm:px-12 lg:px-16">
+        <main className="relative z-10 mx-auto max-w-6xl px-4 pb-16 pt-28 sm:px-12 sm:pb-20 sm:pt-32 lg:px-16">
           {/* Hero Section */}
-          <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-12 sm:gap-16 mb-40">
-            <div className="flex flex-col gap-8 order-2 sm:order-1">
+          <header className="mb-20 flex flex-col gap-10 sm:mb-40 sm:flex-row sm:items-center sm:justify-between sm:gap-16">
+            <div className="order-2 flex flex-col gap-6 sm:order-1 sm:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export default function Home() {
               >
                 <BlurText 
                   text="hi, i'm lakshit sachdeva" 
-                  className="text-6xl sm:text-9xl font-bold tracking-tighter lowercase" 
+                  className="text-4xl font-bold tracking-tighter lowercase sm:text-7xl lg:text-9xl" 
                   delay={100}
                   animateBy="words"
                 />
@@ -108,15 +108,15 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
-                className="flex flex-wrap gap-8 text-sm font-medium lowercase text-zinc-500"
+                className="flex flex-wrap gap-4 text-xs font-medium lowercase text-zinc-500 sm:gap-8 sm:text-sm"
               >
-                <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                <a href="mailto:Lakshits.official@gmail.com" className="flex items-center gap-2 break-all text-brand transition-colors hover:text-brand/80 sm:break-normal">
                   <Mail size={16} /> lakshits.official@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                <a href="https://www.linkedin.com/in/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand transition-colors hover:text-brand/80">
                   <Linkedin size={16} /> linkedin
                 </a>
-                <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:text-brand/80 transition-colors">
+                <a href="https://github.com/lakshitsachdeva" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand transition-colors hover:text-brand/80">
                   <Github size={16} /> github
                 </a>
               </motion.div>
@@ -138,28 +138,28 @@ export default function Home() {
           </header>
 
           {/* Core Focus Section */}
-          <section className="mb-64 max-w-4xl">
+          <section className="mb-24 max-w-4xl sm:mb-64">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-3xl sm:text-5xl font-light leading-tight text-zinc-300 lowercase">
+              <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
                 building stuff at the intersection of <span className="text-white font-medium italic px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves.
               </p>
             </motion.div>
           </section>
 
           {/* High-Impact Projects */}
-          <section className="mb-64">
-            <div className="flex justify-between items-end mb-16">
+          <section className="mb-24 sm:mb-64">
+            <div className="mb-10 flex items-end justify-between sm:mb-16">
               <div>
-                <h3 className="text-4xl font-bold lowercase">some things i've built</h3>
+                <h3 className="text-3xl font-bold lowercase sm:text-4xl">some things i've built</h3>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-12">
               {projects.map((project, i) => (
                 <motion.div
                   key={project.title}
@@ -169,8 +169,8 @@ export default function Home() {
                   transition={{ delay: i * 0.1, duration: 0.8 }}
                   className="group"
                 >
-                  <PixelCard variant={project.variant} speed={300} className="w-full !h-[480px] sm:!h-[560px] transition-transform duration-500 group-hover:scale-[1.02]">
-                    <div className="absolute inset-0 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:min-h-[480px] flex flex-col justify-end sm:justify-start p-6 sm:p-8 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none">
+                  <PixelCard variant={project.variant} speed={300} className="w-full !h-[420px] sm:!h-[520px] lg:!h-[560px] transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-transparent p-5 sm:inset-x-0 sm:bottom-0 sm:top-auto sm:min-h-[480px] sm:justify-start sm:p-8">
                       <div className="flex flex-col gap-3 items-start w-full min-w-0">
                         <div className="w-12 h-12 flex items-center justify-center shrink-0 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10">
                           {(() => {
@@ -178,10 +178,10 @@ export default function Home() {
                             return <IconComponent size={24} className="text-blue-400 shrink-0" />;
                           })()}
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-bold leading-tight group-hover:text-brand transition-colors lowercase break-words w-full text-left">
+                        <h3 className="w-full break-words text-left text-2xl font-bold leading-tight lowercase transition-colors group-hover:text-brand sm:text-3xl">
                           {project.title}
                         </h3>
-                        <p className="text-zinc-400 text-sm leading-relaxed font-medium lowercase break-words line-clamp-2 sm:line-clamp-3 w-full text-left">
+                        <p className="w-full break-words text-left text-sm font-medium leading-relaxed lowercase text-zinc-400 line-clamp-3 sm:line-clamp-3">
                           {project.description}
                         </p>
                         <div className="flex flex-wrap gap-2 sm:gap-3 w-full">
@@ -191,13 +191,13 @@ export default function Home() {
                             </span>
                           ))}
                         </div>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-3 sm:gap-4">
                           {"live" in project && project.live && (
                             <a 
                               href={project.live} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-white hover:text-brand transition-colors text-sm font-medium lowercase pointer-events-auto"
+                              className="pointer-events-auto inline-flex items-center gap-2 text-sm font-medium lowercase text-white transition-colors hover:text-brand"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <ExternalLink size={16} className="shrink-0" /> live
@@ -208,7 +208,7 @@ export default function Home() {
                               href={project.github} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-white hover:text-brand transition-colors text-sm font-medium lowercase pointer-events-auto"
+                              className="pointer-events-auto inline-flex items-center gap-2 text-sm font-medium lowercase text-white transition-colors hover:text-brand"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <Github size={16} className="shrink-0" /> repo
@@ -224,22 +224,22 @@ export default function Home() {
           </section>
 
           {/* Call to Action */}
-          <section className="py-32 border-t border-white/5">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-12">
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-center md:text-left lowercase">
+          <section className="border-t border-white/5 py-20 sm:py-32">
+            <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:gap-12">
+              <h2 className="text-center text-3xl font-bold tracking-tighter lowercase sm:text-5xl md:text-left md:text-6xl">
                 wanna build something? <br />
                 <span className="text-zinc-500">let's connect</span>
               </h2>
-              <Link href="mailto:Lakshits.official@gmail.com" className="px-12 py-6 bg-white text-black font-medium lowercase text-base rounded-full hover:bg-brand transition-all hover:scale-105 active:scale-95">
+              <Link href="mailto:Lakshits.official@gmail.com" className="rounded-full bg-white px-8 py-4 text-sm font-medium lowercase text-black transition-all hover:scale-105 hover:bg-brand active:scale-95 sm:px-12 sm:py-6 sm:text-base">
                 say hi
               </Link>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="pt-24 flex flex-col sm:flex-row justify-between items-center gap-8 text-zinc-500 text-[10px] font-medium lowercase">
+          <footer className="flex flex-col items-center justify-between gap-6 pt-14 text-[10px] font-medium lowercase text-zinc-500 sm:flex-row sm:gap-8 sm:pt-24">
             <p>© 2026 lakshit sachdeva</p>
-            <div className="flex gap-12">
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
               <Link href="/blog" className="hover:text-white transition-colors">journal</Link>
               <Link href="/experience" className="hover:text-white transition-colors">history</Link>
               <Link href="/about" className="hover:text-white transition-colors">about</Link>

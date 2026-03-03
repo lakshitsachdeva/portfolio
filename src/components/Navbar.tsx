@@ -17,14 +17,14 @@ function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 py-2 px-2 bg-black/50 backdrop-blur-md border border-white/10 rounded-full">
-      <ul className="flex items-center gap-2">
+    <nav className="fixed top-3 sm:top-8 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-auto max-w-max py-1.5 sm:py-2 px-1.5 sm:px-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full">
+      <ul className="flex items-center justify-center gap-1 sm:gap-2">
         {navItems.map((item) => (
           <li key={item.path}>
             <Link
               href={item.path}
               className={cn(
-                "relative px-4 py-2 text-xs font-medium lowercase transition-colors",
+                "relative px-2.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-medium lowercase transition-colors whitespace-nowrap",
                 pathname === item.path ? "text-white" : "text-zinc-500 hover:text-zinc-300"
               )}
             >

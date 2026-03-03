@@ -24,14 +24,14 @@ export default function BlogPage() {
       {/* Black overlay for readability */}
       <div className="fixed inset-0 z-[1] bg-black/40" />
 
-      <main className="relative z-10 mx-auto max-w-4xl px-6 py-40">
+      <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-24"
+          className="mb-14 sm:mb-24"
         >
-          <h1 className="text-6xl sm:text-8xl font-bold tracking-tighter mb-8 lowercase">journal</h1>
-          <p className="text-zinc-400 text-xl font-medium tracking-tight max-w-xl lowercase">
+          <h1 className="mb-6 text-5xl font-bold tracking-tighter lowercase sm:mb-8 sm:text-8xl">journal</h1>
+          <p className="max-w-xl text-base font-medium tracking-tight lowercase text-zinc-400 sm:text-xl">
             thoughts, experiments, and things i'm learning
           </p>
         </motion.div>
@@ -40,12 +40,12 @@ export default function BlogPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-10"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:rounded-3xl sm:p-10"
         >
-          <p className="text-2xl sm:text-3xl font-medium tracking-tight lowercase text-zinc-200">
+          <p className="text-2xl font-medium tracking-tight lowercase text-zinc-200 sm:text-3xl">
             coming soon.
           </p>
-          <p className="mt-4 text-zinc-400 font-medium lowercase max-w-2xl leading-relaxed">
+          <p className="mt-3 max-w-2xl text-sm font-medium leading-relaxed lowercase text-zinc-400 sm:mt-4 sm:text-base">
             i'm still setting this up — will start posting writeups, experiments, and little breakdowns here.
           </p>
         </motion.div>
