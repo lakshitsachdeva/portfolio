@@ -154,7 +154,10 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
-                building stuff at the intersection of <span className="text-white font-medium italic px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves. in founder mode at{" "}
+                building stuff at the intersection of <span className="text-brand font-medium italic px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves.
+                <p>
+                  <br />
+                nerding at {" "}
                 <a
                   href="https://www.athair.app"
                   target="_blank"
@@ -164,6 +167,7 @@ export default function Home() {
                   athair.app
                 </a>
                 .
+                </p>
               </p>
             </motion.div>
           </section>
