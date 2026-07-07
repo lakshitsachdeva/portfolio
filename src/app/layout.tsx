@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "lakshit sachdeva",
-  description: "Portfolio of Lakshit Sachdeva, a Computer Science student specializing in Machine Learning and Full-Stack Development.",
+  description: "Portfolio of Lakshit Sachdeva, a computer engineering student and AI builder working across local-first systems, machine learning, and full-stack product engineering.",
   icons: {
     icon: [
       { url: '/favicon.png', type: 'image/png' },

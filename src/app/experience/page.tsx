@@ -122,7 +122,7 @@ function ExperienceCard({ exp, index, expandedIndex, setExpandedIndex }: Experie
                     : 'border-brand/40 bg-brand/15 text-brand hover:bg-brand/25'
                 }`}
               >
-                www.athair.app <ExternalLink size={12} />
+                {new URL(exp.website).hostname.replace(/^www\./, "")} <ExternalLink size={12} />
               </a>
             )}
           </div>
@@ -175,55 +175,82 @@ export default function ExperiencePage() {
 
   const experiences: ExperienceItem[] = [
     {
-      company: "Athair",
-      role: "Founder",
-      date: "november 2025 - present",
+      company: "Ernst & Young",
+      role: "ai intern",
+      date: "may 2026 - present",
       location: "mumbai, india",
-      website: "https://www.athair.app",
+      website: "https://www.ey.com/",
       bullets: [
-        "Building Athair, an AI-powered trade stress-testing engine that validates stock trade ideas before capital deployment, designed to bring institutional-grade risk frameworks to retail and independent investors.",
-        "Engineered multi-agent LLM reasoning pipelines for thesis decomposition, volatility regime detection, and fat-tailed Monte Carlo simulation with probabilistic confidence scoring.",
-        "Developed scenario analysis and fragility detection modules that surface overfitting and hidden tail risks in user-defined trade theses, mimicking the pre-trade validation workflows of systematic hedge funds.",
-        "Architected the full product stack independently, from quantitative modeling and LLM integration to system design and product roadmap."
+        "Supporting ai-driven client engagements across automation, data extraction, and intelligence workflows for enterprise use cases.",
+        "Assisting in the development of ai-enabled solutions for client-facing problem statements, including research, workflow design, technical feasibility analysis, and prototype refinement.",
+        "Collaborating with internal teams to translate business requirements into practical ai and ml implementation plans with a focus on reliability, scalability, and delivery readiness."
       ],
-      tags: ["founder", "llm systems", "quant risk", "product"]
+      tags: ["enterprise ai", "automation", "workflow design", "client delivery"]
     },
     {
-      company: "AMAZON, INDIA",
-      role: "trainee – ml summer school",
+      company: "Amazon ML Summer School",
+      role: "ml trainee",
       date: "august 2025",
-      description: "selected for amazon ml summer school 2025 (5% acceptance rate), an intensive program covering advanced ml topics including supervised learning, deep neural networks, generative ai, and reinforcement learning, with interactive sessions led by senior amazon scientists.",
-      tags: ["generative ai", "deep learning", "supervised learning"]
+      bullets: [
+        "Selected for Amazon ML Summer School 2025 with a sub-5 percent national acceptance rate across applicants from top engineering institutions in india.",
+        "Completed an intensive research-grade curriculum covering supervised learning, deep neural networks, probabilistic graphical models, generative ai, and reinforcement learning.",
+        "Gained hands-on exposure to production-scale ml systems and model training and evaluation practices shared by senior amazon scientists and principal engineers."
+      ],
+      tags: ["deep learning", "generative ai", "reinforcement learning"]
     },
     {
-      company: "NMIMS, MUMBAI, MAHARASHTRA",
-      role: "research intern - solar cell optimization",
-      date: "march 2023 - august 2024",
-      description: "conducted pioneering research in lead-free perovskite-based solar cells, achieving a remarkable efficiency using advanced device configuration and employing SCAPS 1D tool. wrote a paper titled – 'enhancing efficiency of lead-free perovskite solar cell by varying thickness, layer combination and back contact work function'.",
-      tags: ["computational physics", "device optimization", "SCAPS-1D"]
+      company: "NMIMS",
+      role: "research intern",
+      date: "may 2023 - august 2024",
+      location: "mumbai, india",
+      bullets: [
+        "Conducted first-principles device simulation of lead-free perovskite solar cells using scaps-1d, varying absorber thickness, layer combinations, and back-contact work function to optimize efficiency.",
+        "Co-authored and presented the paper 'enhancing efficiency of lead-free perovskite solar cell by varying thickness, layer combination and back contact work function' at ieee icecct 2024."
+      ],
+      tags: ["scaps-1d", "device simulation", "research", "ieee"]
     },
     {
-      company: "THE QUILL AND INK, GURUGRAM, HARYANA",
-      role: "founder, ceo",
-      date: "january 2021 – october 2023",
-      description: "pioneered a non-profit organization aimed at elevating awareness of social stigmas in india, spearheading strategic initiatives, directing a team of contributors, and supervising content dissemination. collaborated with 10+ team members to drive substantial engagement, amassing over 50,000 interactions on various social media platforms.",
-      tags: ["founder", "non-profit", "social impact"]
+      company: "Google Developer Student Club",
+      role: "head of department",
+      date: "2024 - 2025",
+      location: "nmims, mumbai",
+      description: "led 11 department heads and more than 100 executives across technical programming, workshops, and digital outreach for the student community.",
+      tags: ["leadership", "community", "operations"]
     }
   ];
 
   const education = [
     {
       school: "NMIMS MPSTME",
-      degree: "b.tech in computer science",
-      date: "expected 2027",
-      details: "specializing in ai and distributed systems"
+      degree: "b.tech in computer engineering",
+      date: "may 2027",
+      details: "cgpa: 4.00 / 4.00"
     },
     {
-      school: "IIT Madras",
-      degree: "foundations in data science",
-      date: "2023 - 2024",
-      details: "advanced coursework in linear algebra, statistics, and python for data science"
+      school: "IBM Machine Learning Professional Certificate",
+      degree: "coursera certification",
+      date: "completed",
+      details: "covered supervised and unsupervised learning, model selection, feature engineering, evaluation, and practical ml pipelines"
     }
+  ];
+
+  const publications = [
+    {
+      title: "Benchmark Collapse in Text CAPTCHAs",
+      meta: "preprint under peer review",
+      details: "Built CAPTCHA-X, a 160,000-image benchmark showing severe cross-generator performance collapse and the need for reliability-aware evaluation in text captcha recognition."
+    },
+    {
+      title: "WideQuant",
+      meta: "under development",
+      details: "Designing arithmetic-aware retrieval for numeric reasoning, enabling search systems to combine multiple quantities before evaluating a predicate."
+    }
+  ];
+
+  const achievements = [
+    "1st prize at the national level paper presentation competition, apogee, bits pilani.",
+    "Advanced recurdo to the final stage of the hykr challenge, with funding consideration in progress.",
+    "Open-source contributor with early traction on drift through pipx and npm distribution."
   ];
 
   return (
@@ -295,6 +322,52 @@ export default function ExperiencePage() {
                 </div>
                 <p className="mb-3 text-sm font-medium lowercase text-brand sm:mb-4">{edu.degree}</p>
                 <p className="text-sm font-medium lowercase text-zinc-300 sm:text-base">{edu.details}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-20 sm:mb-48">
+          <h2 className="mb-8 text-xs font-medium lowercase text-zinc-500 sm:mb-16">
+            selected research
+          </h2>
+          <div className="space-y-5 sm:space-y-8">
+            {publications.map((publication, i) => (
+              <motion.div
+                key={publication.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="rounded-2xl border border-brand/20 bg-brand/5 p-6 backdrop-blur-sm sm:rounded-3xl sm:p-8"
+              >
+                <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                  <h3 className="text-xl font-bold lowercase sm:text-2xl">{publication.title}</h3>
+                  <span className="text-[10px] font-medium lowercase text-brand">{publication.meta}</span>
+                </div>
+                <p className="text-sm font-medium lowercase leading-relaxed text-zinc-300 sm:text-base">
+                  {publication.details}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-20 sm:mb-40">
+          <h2 className="mb-8 text-xs font-medium lowercase text-zinc-500 sm:mb-16">
+            awards + momentum
+          </h2>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {achievements.map((achievement, i) => (
+              <motion.div
+                key={achievement}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm font-medium lowercase leading-relaxed text-zinc-300 backdrop-blur-sm sm:rounded-3xl sm:p-6"
+              >
+                {achievement}
               </motion.div>
             ))}
           </div>

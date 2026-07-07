@@ -5,7 +5,7 @@ import ClickSpark from "@/components/react-bits/ClickSpark";
 import PixelBlast from "@/components/react-bits/PixelBlast";
 import PixelCard from "@/components/react-bits/PixelCard";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Smartphone, Shield, Sparkles, FileText, TrendingUp } from "lucide-react";
+import { Github, Linkedin, Mail, Cpu, Network, ExternalLink, Shield, Sparkles, FileText, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -13,61 +13,86 @@ import { useMemo } from "react";
 export default function Home() {
   const projects = useMemo(() => [
     {
-      title: "Athair - AI Trade Stress Testing",
-      description: "AI-powered trade stress-testing engine that validates stock trade ideas before capital deployment with institutional-style risk frameworks, regime-aware simulation, and confidence scoring.",
-      tags: ["LLM Agents", "Quant Risk", "Monte Carlo", "Trading"],
+      title: "Recurdo - local-first AI memory engine",
+      description: "A private memory layer that indexes files, screenshots, browser activity, chats, and saved links so information can be retrieved through contextual natural-language search instead of exact filenames.",
+      tags: ["FastAPI", "React", "FAISS", "SQLite FTS", "local-first"],
       variant: "blue" as const,
-      live: "https://www.athair.app",
+      live: "https://recurdo.lakshitsachdeva.tech/",
+      icon: FileText
+    },
+    {
+      title: "Athair - trade thesis stress testing",
+      description: "An AI-powered engine that pressure-tests trade ideas with thesis decomposition, volatility regime detection, fat-tailed Monte Carlo simulation, and confidence-driven invalidation logic.",
+      tags: ["LLM agents", "quant risk", "Monte Carlo", "trading"],
+      variant: "blue" as const,
+      live: "https://athair.lakshitsachdeva.tech/",
       icon: TrendingUp
     },
     {
-      title: "drift-ml: LLM AutoML Agent",
-      description: "LLM-guided AutoML agent that uploads CSV files, chats with AI, and gets trained models. Features beautiful charts, model comparison, smart predictions, and Gemini-powered pipeline generation.",
-      tags: ["Python", "TypeScript", "AutoML"],
+      title: "drift - local-first AutoML CLI",
+      description: "An open-source AutoML system that turns plain-English and Hinglish requests into trained, validated ML models through structured planning, self-healing retries, and hard reliability gates.",
+      tags: ["Python", "FastAPI", "agentic workflows", "AutoML"],
       variant: "blue" as const,
       github: "https://github.com/lakshitsachdeva/intent2model",
-      live: "https://drift-ml.vercel.app",
+      live: "https://drift.lakshitsachdeva.tech/",
       icon: Sparkles
     },
     {
-      title: "Vision-AI Waste Management",
-      description: "Deployed a custom ResNet-50 backbone with 95.45% inference accuracy. Engineered real-time edge processing on Arduino for automated industrial waste classification.",
-      tags: ["TensorFlow", "OpenCV", "Edge AI", "IoT"],
+      title: "Smart waste management system",
+      description: "A hardware-software co-design build with a fine-tuned ResNet-50, OpenCV-based live inference, Streamlit monitoring, and Arduino-driven servo actuation for automated waste segregation.",
+      tags: ["PyTorch", "OpenCV", "Arduino", "computer vision"],
       variant: "blue" as const,
-      github: "https://github.com/lakshitsachdeva",
       icon: Cpu
     },
     {
-      title: "Predictive Alpha: Quant Platform",
-      description: "Developing a full-stack financial engine with real-time volatility tracking, secure multi-tenant architecture, and automated portfolio optimization algorithms.",
-      tags: ["Next.js", "Supabase", "SQL", "Quantitative ML"],
+      title: "Financial portfolio management system",
+      description: "A full-stack tracker with secure JWT auth, multi-asset portfolio views, real-time performance analytics, and Supabase-backed live updates for holdings and allocations.",
+      tags: ["React", "Supabase", "PostgreSQL", "analytics"],
       variant: "blue" as const,
       github: "https://github.com/lakshitsachdeva",
       icon: Network
     },
     {
-      title: "QuizGen - AI-Powered Quiz App",
-      description: "Android quiz application with AI-powered question generation from notes, PDFs, and images. Features preloaded quizzes, Gemini API integration, Firebase authentication, and ML Kit OCR.",
-      tags: ["Android", "Java", "Firebase", "Gemini API", "ML Kit"],
+      title: "CAPTCHA-X benchmark study",
+      description: "A synthetic benchmark reliability study showing CAPTCHA recognition performance can collapse under cross-generator transfer, backed by a 160,000-image benchmark and reliability-aware evaluation.",
+      tags: ["research", "CNNs", "OOD evaluation", "benchmarking"],
       variant: "blue" as const,
-      github: "https://github.com/lakshitsachdeva/ai-quiz",
-      icon: Smartphone
-    },
-    {
-      title: "CAPTCHA-X Recognition System",
-      description: "Deep learning system using convolutional neural networks for CAPTCHA recognition. 24-layer CNN architecture achieving 98.97% accuracy on 5-character CAPTCHAs with grayscale preprocessing.",
-      tags: ["Python", "TensorFlow", "CNN", "Computer Vision"],
-      variant: "blue" as const,
-      github: "https://github.com/lakshitsachdeva/captcha-x-final",
+      live: "https://doi.org/10.21203/rs.3.rs-9558596/v1",
       icon: Shield
+    }
+  ], []);
+
+  const highlights = useMemo(() => [
+    {
+      label: "current",
+      value: "AI intern at Ernst & Young"
     },
     {
-      title: "Claims Processor",
-      description: "Intelligent insurance claims processing system leveraging Cloud LLM APIs, RAG, and Gmail integration. Automated claim evaluation with structured query parsing, confidence scoring, and FAISS-powered semantic search.",
-      tags: ["Python", "FastAPI", "RAG", "FAISS", "Streamlit", "Gmail API"],
-      variant: "blue" as const,
-      github: "https://github.com/Aayush-K15/Bajaj-Finserv-Hackathon",
-      icon: FileText
+      label: "education",
+      value: "B.Tech in computer engineering, NMIMS MPSTME"
+    },
+    {
+      label: "recognition",
+      value: "Amazon ML Summer School 2025"
+    },
+    {
+      label: "research",
+      value: "IEEE conference paper + CAPTCHA-X preprint"
+    }
+  ], []);
+
+  const skillGroups = useMemo(() => [
+    {
+      title: "ml / ai",
+      items: ["PyTorch", "scikit-learn", "LLM integration", "RAG", "FAISS", "CNNs", "ResNet", "reinforcement learning"]
+    },
+    {
+      title: "backend / data",
+      items: ["FastAPI", "Supabase", "PostgreSQL", "SQLite FTS", "SQL", "Node.js"]
+    },
+    {
+      title: "frontend / product",
+      items: ["React", "Next.js", "TypeScript", "Streamlit", "Tauri"]
     }
   ], []);
 
@@ -153,30 +178,64 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
-                building stuff at the intersection of <span className="text-brand font-medium italic px-2 py-1">machine learning</span> and scalable systems. currently working on things that learn, reason, and optimize themselves.
-                <p>
-                  <br />
-                nerding at {" "}
-                <a
-                  href="https://www.athair.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-brand underline decoration-brand/70 underline-offset-4 transition-colors hover:text-white"
-                >
-                  athair.app
-                </a>
-                .
+              <div className="space-y-8">
+                <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
+                  i'm a computer engineering student at nmims with a 4.0/4.0 cgpa, currently interning in ai at <span className="text-brand font-medium italic px-2 py-1">ernst & young</span> and building local-first systems that retrieve, reason, and stress-test real-world decisions.
                 </p>
-              </p>
+                <p className="max-w-3xl text-sm font-medium leading-relaxed lowercase text-zinc-400 sm:text-lg">
+                  right now i'm spending most of my time on private memory systems, retrieval pipelines, numeric reasoning, and agent workflows that need to be reliable enough for actual use instead of just nice demos.
+                  <br />
+                  also shipping experiments at{" "}
+                  <a
+                    href="https://athair.lakshitsachdeva.tech/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-brand underline decoration-brand/70 underline-offset-4 transition-colors hover:text-white"
+                  >
+                    athair
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="https://recurdo.lakshitsachdeva.tech/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-brand underline decoration-brand/70 underline-offset-4 transition-colors hover:text-white"
+                  >
+                    recurdo
+                  </a>
+                  .
+                </p>
+              </div>
             </motion.div>
+          </section>
+
+          <section className="mb-24 sm:mb-52">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {highlights.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.7 }}
+                  className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                >
+                  <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
+                    {item.label}
+                  </p>
+                  <p className="text-base font-medium lowercase leading-relaxed text-zinc-200 sm:text-lg">
+                    {item.value}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </section>
 
           {/* High-Impact Projects */}
           <section className="mb-24 sm:mb-64">
             <div className="mb-10 flex items-end justify-between sm:mb-16">
               <div>
-                <h3 className="text-3xl font-bold lowercase sm:text-4xl">some things i've built</h3>
+                <h3 className="text-3xl font-bold lowercase sm:text-4xl">selected work</h3>
               </div>
             </div>
 
@@ -202,7 +261,7 @@ export default function Home() {
                         <h3 className="w-full break-words text-left text-2xl font-bold leading-tight lowercase transition-colors group-hover:text-brand sm:text-3xl">
                           {project.title}
                         </h3>
-                        <p className="w-full break-words text-left text-sm font-medium leading-relaxed lowercase text-zinc-400 line-clamp-3 sm:line-clamp-3">
+                        <p className="w-full break-words text-left text-sm font-medium leading-relaxed lowercase text-zinc-400 line-clamp-4 sm:line-clamp-4">
                           {project.description}
                         </p>
                         <div className="flex flex-wrap gap-2 sm:gap-3 w-full">
@@ -239,6 +298,41 @@ export default function Home() {
                       </div>
                     </div>
                   </PixelCard>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-24 sm:mb-56">
+            <div className="mb-10 flex items-end justify-between sm:mb-16">
+              <div>
+                <h3 className="text-3xl font-bold lowercase sm:text-4xl">toolkit</h3>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+              {skillGroups.map((group, index) => (
+                <motion.div
+                  key={group.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.7 }}
+                  className="rounded-3xl border border-brand/20 bg-brand/5 p-6 backdrop-blur-sm"
+                >
+                  <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
+                    {group.title}
+                  </p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wide text-zinc-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
