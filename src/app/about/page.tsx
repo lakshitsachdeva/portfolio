@@ -46,25 +46,25 @@ export default function AboutPage() {
             className="space-y-5 text-base font-medium leading-relaxed lowercase text-zinc-300 sm:space-y-6 sm:text-xl"
           >
             <p>
-              i'm lakshit sachdeva, a computer engineering student at nmims mpstme in mumbai with a 4.0 out of 4.0 cgpa, currently working as an ai intern at ernst and young
+              i'm lakshit sachdeva. i build things around machine learning, retrieval, and product systems, and right now i'm spending part of my time at ernst and young
             </p>
             <p>
-              most of my work sits at the intersection of machine learning, retrieval, and product engineering, where the hard part is turning promising model behavior into systems that stay useful under messy, real constraints
+              most of the fun for me is in taking ideas that could stay academic or half-baked forever and turning them into something sharp, usable, and calm
             </p>
             <p>
-              i've explored that through independent products like recurdo, athair, and drift, along with research-heavy builds in numeric reasoning, benchmark reliability, computer vision, and local-first knowledge systems
+              i've ended up exploring that through products like recurdo, athair, and drift, plus research-heavy work in numeric reasoning, benchmark reliability, and computer vision
             </p>
             <p>
-              i'm especially interested in workflows where retrieval, structured reasoning, and evaluation need to work together, whether that's searching private memory, challenging a trade thesis, or making a model refuse when confidence is weak
+              i like systems that do more than generate nice looking output. retrieval that actually finds the right thing, reasoning that can be inspected, evaluation that knows when something is shaky
             </p>
             <p>
-              outside product work, i've spent time in research as a solar-cell simulation intern at nmims, co-authored an ieee conference paper, and built the captcha-x benchmark study around cross-generator reliability in text captcha recognition
+              outside product work, i've spent time in research, shipped open-source tools, and worked on everything from solar-cell simulation to captcha benchmarks to local-first memory engines
             </p>
             <p>
-              i also care a lot about building communities around technical work, which is why i led a department at the google developer student club and kept contributing to open-source releases like drift
+              i also like building around communities and ideas, not just code, which is part of why i keep coming back to open source and student-led technical spaces
             </p>
             <p className="text-zinc-400">
-              if something is ambitious, technical, and slightly unreasonable, that's usually a pretty good sign i'll want to work on it
+              if it's technically ambitious, slightly obsessive, and genuinely useful, i'll probably want in
             </p>
           </motion.div>
         </section>

@@ -192,7 +192,6 @@ export default function ExperiencePage() {
       role: "ml trainee",
       date: "august 2025",
       bullets: [
-        "Selected for Amazon ML Summer School 2025 with a sub-5 percent national acceptance rate across applicants from top engineering institutions in india.",
         "Completed an intensive research-grade curriculum covering supervised learning, deep neural networks, probabilistic graphical models, generative ai, and reinforcement learning.",
         "Gained hands-on exposure to production-scale ml systems and model training and evaluation practices shared by senior amazon scientists and principal engineers."
       ],
@@ -224,7 +223,7 @@ export default function ExperiencePage() {
       school: "NMIMS MPSTME",
       degree: "b.tech in computer engineering",
       date: "may 2027",
-      details: "cgpa: 4.00 / 4.00"
+      details: "mumbai"
     },
     {
       school: "IBM Machine Learning Professional Certificate",
@@ -248,9 +247,9 @@ export default function ExperiencePage() {
   ];
 
   const achievements = [
-    "1st prize at the national level paper presentation competition, apogee, bits pilani.",
-    "Advanced recurdo to the final stage of the hykr challenge, with funding consideration in progress.",
-    "Open-source contributor with early traction on drift through pipx and npm distribution."
+    "paper presentation winner at apogee, bits pilani.",
+    "recurdo made it to the final stage of the hykr challenge.",
+    "drift picked up early open-source traction through pipx and npm."
   ];
 
   return (
@@ -355,7 +354,7 @@ export default function ExperiencePage() {
 
         <section className="mb-20 sm:mb-40">
           <h2 className="mb-8 text-xs font-medium lowercase text-zinc-500 sm:mb-16">
-            awards + momentum
+            other things
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {achievements.map((achievement, i) => (

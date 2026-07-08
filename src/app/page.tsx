@@ -64,20 +64,20 @@ export default function Home() {
 
   const highlights = useMemo(() => [
     {
-      label: "current",
-      value: "AI intern at Ernst & Young"
+      label: "now",
+      value: "building at ey"
     },
     {
-      label: "education",
-      value: "B.Tech in computer engineering, NMIMS MPSTME"
+      label: "base",
+      value: "mumbai"
     },
     {
-      label: "recognition",
-      value: "Amazon ML Summer School 2025"
+      label: "focus",
+      value: "retrieval, reasoning, local-first systems"
     },
     {
-      label: "research",
-      value: "IEEE conference paper + CAPTCHA-X preprint"
+      label: "side quests",
+      value: "research, products, open source"
     }
   ], []);
 
@@ -180,10 +180,10 @@ export default function Home() {
             >
               <div className="space-y-8">
                 <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
-                  i'm a computer engineering student at nmims with a 4.0/4.0 cgpa, currently interning in ai at <span className="text-brand font-medium italic px-2 py-1">ernst & young</span> and building local-first systems that retrieve, reason, and stress-test real-world decisions.
+                  i build machine learning products, retrieval systems, and weirdly specific tools that feel useful the second you touch them. currently spending time at <span className="text-brand font-medium italic px-2 py-1">ey</span> and shipping things on my own.
                 </p>
                 <p className="max-w-3xl text-sm font-medium leading-relaxed lowercase text-zinc-400 sm:text-lg">
-                  right now i'm spending most of my time on private memory systems, retrieval pipelines, numeric reasoning, and agent workflows that need to be reliable enough for actual use instead of just nice demos.
+                  most of what i like sits somewhere between software, ml, and product taste. private memory, numeric reasoning, agent workflows, interfaces that make complicated systems feel obvious.
                   <br />
                   also shipping experiments at{" "}
                   <a
