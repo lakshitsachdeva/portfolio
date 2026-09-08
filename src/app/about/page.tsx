@@ -46,7 +46,7 @@ export default function AboutPage() {
             className="space-y-5 text-base font-medium leading-relaxed lowercase text-zinc-300 sm:space-y-6 sm:text-xl"
           >
             <p>
-              i'm lakshit sachdeva. i build things around machine learning, retrieval, and product systems, and right now i'm spending part of my time at ernst and young
+              i'm lakshit sachdeva. i build things around machine learning, retrieval, and product systems, and right now i'm building agent evaluation infrastructure at parsewave and doing llm interpretability research with uiuc
             </p>
             <p>
               most of the fun for me is in taking ideas that could stay academic or half-baked forever and turning them into something sharp, usable, and calm

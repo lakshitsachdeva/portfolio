@@ -175,17 +175,43 @@ export default function ExperiencePage() {
 
   const experiences: ExperienceItem[] = [
     {
+      company: "Parsewave.ai",
+      role: "ai engineer",
+      date: "aug 2026 - present",
+      location: "san francisco, remote",
+      website: "https://parsewave.ai/",
+      bullets: [
+        "Designing offline scientific-ml benchmarks for pde solver discovery and stable-structure search, with protected budgets, hidden transfer splits, and reproducible run evidence.",
+        "Instrumenting long-horizon agent runs across trajectories, tool calls, checkpoints, verifier outcomes, cost, and failure stages to tell real benchmark progress from lucky runs.",
+        "Building evaluation infrastructure that separates invalid submissions from genuine zero scores and pairs diagnostic probes with hidden authoritative transfer evaluation."
+      ],
+      tags: ["agent evaluation", "scientific ml", "benchmarks", "llm systems"]
+    },
+    {
+      company: "UIUC",
+      role: "summer researcher",
+      date: "jul 2026 - present",
+      location: "remote",
+      website: "https://illinois.edu/",
+      bullets: [
+        "Investigating whether naturalistic strategies for eliciting and resisting llm sycophancy map to distinct internal mechanisms across llama- and mistral-family models.",
+        "Building a controlled 1,500+ prompt benchmark and reproducible pipeline for activation probing, cross-strategy transfer, and representation-level analysis.",
+        "Testing causal steering interventions with preservation checks for factual accuracy, instruction following, and unintended capability degradation."
+      ],
+      tags: ["activation probing", "causal steering", "interpretability", "evaluation"]
+    },
+    {
       company: "Ernst & Young",
       role: "ai intern",
-      date: "may 2026 - present",
+      date: "may 2026 - jul 2026",
       location: "mumbai, india",
       website: "https://www.ey.com/",
       bullets: [
-        "Supporting ai-driven client engagements across automation, data extraction, and intelligence workflows for enterprise use cases.",
-        "Assisting in the development of ai-enabled solutions for client-facing problem statements, including research, workflow design, technical feasibility analysis, and prototype refinement.",
-        "Collaborating with internal teams to translate business requirements into practical ai and ml implementation plans with a focus on reliability, scalability, and delivery readiness."
+        "Owned implementation of a client-facing tender-to-opportunity pipeline that extracted government bids, interpreted requirements, matched catalogue items, and generated qualified leads.",
+        "Built enterprise information-retrieval and workflow agents using copilot studio, power automate, dataverse, and power apps.",
+        "Implemented authentication, row- and field-level crm controls, and validation guardrails so outputs respected each employee's identity and permissions."
       ],
-      tags: ["enterprise ai", "automation", "workflow design", "client delivery"]
+      tags: ["enterprise ai", "retrieval agents", "automation", "client delivery"]
     },
     {
       company: "Amazon ML Summer School",
@@ -223,13 +249,13 @@ export default function ExperiencePage() {
       school: "NMIMS MPSTME",
       degree: "b.tech in computer engineering",
       date: "may 2027",
-      details: "mumbai"
+      details: "mumbai, cgpa 4.00/4.00"
     },
     {
-      school: "IBM Machine Learning Professional Certificate",
-      degree: "coursera certification",
-      date: "completed",
-      details: "covered supervised and unsupervised learning, model selection, feature engineering, evaluation, and practical ml pipelines"
+      school: "IIT Madras",
+      degree: "foundations in data science",
+      date: "2023 - 2024",
+      details: "remote, gpa 9.5/10"
     }
   ];
 
@@ -241,14 +267,14 @@ export default function ExperiencePage() {
     },
     {
       title: "WideQuant",
-      meta: "under development",
-      details: "Designing arithmetic-aware retrieval for numeric reasoning, enabling search systems to combine multiple quantities before evaluating a predicate."
+      meta: "submitted via arr for eacl 2027",
+      details: "Introduced construction-before-ranking retrieval for numeric predicates, lifting decomposed document-level mrr@10 from 0.19 to 0.69 on a controlled e-commerce benchmark."
     }
   ];
 
   const achievements = [
     "paper presentation winner at apogee, bits pilani.",
-    "recurdo made it to the final stage of the hykr challenge.",
+    "athair was a top-30 national finalist in hykr studio's venture-fundraising programme.",
     "drift picked up early open-source traction through pipx and npm."
   ];
 

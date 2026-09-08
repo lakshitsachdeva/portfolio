@@ -65,7 +65,7 @@ export default function Home() {
   const highlights = useMemo(() => [
     {
       label: "now",
-      value: "building at ey"
+      value: "agent evals at parsewave + llm research with uiuc"
     },
     {
       label: "base",
@@ -73,7 +73,7 @@ export default function Home() {
     },
     {
       label: "focus",
-      value: "retrieval, reasoning, local-first systems"
+      value: "evaluation, retrieval, local-first systems"
     },
     {
       label: "side quests",
@@ -180,7 +180,7 @@ export default function Home() {
             >
               <div className="space-y-8">
                 <p className="text-xl font-light leading-snug text-zinc-300 lowercase sm:text-4xl lg:text-5xl">
-                  i build machine learning products, retrieval systems, and weirdly specific tools that feel useful the second you touch them. currently spending time at <span className="text-brand font-medium italic px-2 py-1">ey</span> and shipping things on my own.
+                  i build machine learning products, retrieval systems, and weirdly specific tools that feel useful the second you touch them. currently building agent evals at <span className="text-brand font-medium italic px-2 py-1">parsewave</span>, doing llm research with <span className="text-brand font-medium italic px-2 py-1">uiuc</span>, and shipping things on my own.
                 </p>
                 <p className="max-w-3xl text-sm font-medium leading-relaxed lowercase text-zinc-400 sm:text-lg">
                   most of what i like sits somewhere between software, ml, and product taste. private memory, numeric reasoning, agent workflows, interfaces that make complicated systems feel obvious.
