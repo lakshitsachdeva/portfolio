@@ -49,6 +49,9 @@ export default function AboutPage() {
               i'm lakshit sachdeva. i build things around machine learning, retrieval, and product systems, and right now i'm building agent evaluation infrastructure at parsewave and doing llm interpretability research with uiuc
             </p>
             <p>
+              i also work as an independent contractor, providing ai/ml engineering, model evaluation, dataset development, research, and related technical services
+            </p>
+            <p>
               most of the fun for me is in taking ideas that could stay academic or half-baked forever and turning them into something sharp, usable, and calm
             </p>
             <p>
