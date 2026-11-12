@@ -104,3 +104,89 @@
     overflow-x: hidden;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.pixel-field .pixel-blast-container {
+  filter: grayscale(1) contrast(1.2);
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-outline {
+  color: transparent;
+  -webkit-text-stroke: max(1px, 0.012em) rgba(255, 255, 255, 0.55);
+}
+
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s;
+}
+
+.link-sweep:hover {
+  background-position: 0% 100%;
+  background-size: 100% 1px;
+}
+
+.work-row::before {
+  content: "";
+  position: absolute;
+  inset: -1px 0 auto 0;
+  height: 1px;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.work-row:hover::before {
+  transform: scaleX(1);
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.scroll-cue {
+  animation: scroll-cue 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-cue {
+  0%, 100% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track,
+  .scroll-cue {
+    animation: none;
+  }
+}
