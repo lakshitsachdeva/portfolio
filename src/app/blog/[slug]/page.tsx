@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useParams } from 'next/navigation';
-import PixelBlast from '@/components/react-bits/PixelBlast';
+import { PageShell } from '@/components/site';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import Link from 'next/link';
@@ -57,80 +57,36 @@ export default function BlogPostPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-black text-white">
-        <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
-          <PixelBlast 
-            variant="square" 
-            pixelSize={5} 
-            color="#B19EEF" 
-            patternScale={2} 
-            patternDensity={0.8}
-            enableRipples={false}
-            transparent
-            speed={2}
-            antialias={false}
-          />
-        </div>
-        <div className="fixed inset-0 z-[1] bg-black/40" />
-        <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
+      <PageShell>
+        <div className="mx-auto max-w-4xl pt-28 sm:pt-40">
           <div className="space-y-4 animate-pulse">
             <div className="h-12 bg-zinc-900 rounded w-3/4" />
             <div className="h-4 bg-zinc-900 rounded w-1/2" />
             <div className="h-64 bg-zinc-900 rounded w-full" />
           </div>
-        </main>
-      </div>
+        </div>
+      </PageShell>
     );
   }
 
   if (error || !post) {
     return (
-      <div className="relative min-h-screen bg-black text-white">
-        <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
-          <PixelBlast 
-            variant="square" 
-            pixelSize={5} 
-            color="#B19EEF" 
-            patternScale={2} 
-            patternDensity={0.8}
-            enableRipples={false}
-            transparent
-            speed={2}
-            antialias={false}
-          />
-        </div>
-        <div className="fixed inset-0 z-[1] bg-black/40" />
-        <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
+      <PageShell>
+        <div className="mx-auto max-w-4xl pt-28 sm:pt-40">
           <div className="text-center">
             <h1 className="mb-4 text-3xl font-bold lowercase sm:text-4xl">post not found</h1>
             <Link href="/blog" className="text-brand hover:text-white transition-colors lowercase">
               ← back to journal
             </Link>
           </div>
-        </main>
-      </div>
+        </div>
+      </PageShell>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-black text-white">
-      <div className="fixed inset-0 z-0 opacity-70" style={{ minHeight: '100vh', height: '100%' }}>
-        <PixelBlast 
-          variant="square" 
-          pixelSize={4} 
-          color="#B19EEF" 
-          patternScale={2} 
-          patternDensity={1.2}
-          enableRipples 
-          transparent
-          speed={8}
-        />
-      </div>
-      
-      {/* Black overlay for readability */}
-      <div className="fixed inset-0 z-[1] bg-black/40" />
-
-      <main className="relative z-10 mx-auto max-w-4xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-40">
+    <PageShell>
+        <div className="mx-auto max-w-4xl pt-28 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -185,12 +141,7 @@ export default function BlogPostPage() {
             </div>
           </article>
         </motion.div>
-      </main>
-
-      <style jsx global>{`
-        .text-brand { color: #B19EEF; }
-        .bg-brand { background-color: #B19EEF; }
-      `}</style>
-    </div>
+      </div>
+      </PageShell>
   );
 }

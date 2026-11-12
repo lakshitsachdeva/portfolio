@@ -1,7 +1,7 @@
 'use client';
 
-import ClickSpark from "@/components/react-bits/ClickSpark";
 import HalftonePortrait from "@/components/HalftonePortrait";
+import { EASE, EMAIL, PixelField, RisingLine, SectionLabel, Sparks, socials } from "@/components/site";
 import {
   motion,
   useMotionValue,
@@ -11,14 +11,8 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
-
-const PixelBlast = dynamic(() => import("@/components/react-bits/PixelBlast"), { ssr: false });
-
-const EMAIL = "lakshits.official@gmail.com";
-const EASE = [0.2, 0.8, 0.2, 1] as const;
 
 const projects = [
   {
@@ -95,12 +89,6 @@ const statement: { text: string; accent?: boolean }[] = [
   { text: "and shipping things on my own." },
 ];
 
-const socials = [
-  { label: "email", href: `mailto:${EMAIL}` },
-  { label: "linkedin", href: "https://www.linkedin.com/in/lakshitsachdeva" },
-  { label: "github", href: "https://github.com/lakshitsachdeva" },
-];
-
 function MumbaiClock() {
   const [time, setTime] = useState<string | null>(null);
   useEffect(() => {
@@ -117,24 +105,6 @@ function MumbaiClock() {
     return () => clearInterval(id);
   }, []);
   return <span className="tabular-nums">{time ?? "--:--:--"} ist</span>;
-}
-
-function RisingLine({ text, delay, className }: { text: string; delay: number; className?: string }) {
-  return (
-    <span aria-hidden className={`block [clip-path:inset(-20%_-10%_0_-10%)] ${className ?? ""}`}>
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          className="inline-block will-change-transform"
-          initial={{ y: "112%" }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, delay: delay + i * 0.045, ease: EASE }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
-  );
 }
 
 function RevealWord({ children, progress, range, accent }: {
@@ -193,36 +163,12 @@ function Magnetic({ children, className }: { children: ReactNode; className?: st
   );
 }
 
-function SectionLabel({ index, title, meta }: { index: string; title: string; meta?: string }) {
-  return (
-    <div className="mb-8 flex items-baseline justify-between gap-6 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 sm:mb-12">
-      <h2 className="flex items-baseline gap-3">
-        <span className="text-brand">({index})</span>
-        <span className="text-zinc-300">{title}</span>
-      </h2>
-      {meta && <span>{meta}</span>}
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <div className="relative min-h-screen w-full overflow-x-clip bg-black text-white selection:bg-brand selection:text-black">
-      <div className="pixel-field pointer-events-none fixed inset-0 z-0 opacity-35">
-        <PixelBlast
-          variant="square"
-          pixelSize={5}
-          color="#B19EEF"
-          patternScale={2}
-          patternDensity={0.8}
-          enableRipples={false}
-          transparent
-          speed={2}
-          antialias={false}
-        />
-      </div>
+      <PixelField />
 
-      <ClickSpark sparkColor="#B19EEF" sparkSize={14} sparkRadius={30} sparkCount={12} duration={600}>
+      <Sparks>
         <main className="relative z-10">
           <header className="relative mx-auto flex min-h-[100svh] w-full max-w-[1680px] flex-col px-4 pb-6 pt-20 sm:px-10 sm:pb-8 sm:pt-28">
             <motion.div
@@ -444,7 +390,7 @@ export default function Home() {
             </footer>
           </section>
         </main>
-      </ClickSpark>
+      </Sparks>
     </div>
   );
 }
